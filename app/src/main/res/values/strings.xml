@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Langkah</string>
+    <string name="landing_page_image">Landing Page Image</string>
+    <string name="reach_closest_healthcare_around">Reach Closest Healthcare Around</string>
+    <string name="landing_page_desc">Get to know healthcare facility<br />
+        around you including the facilities<br /> and emergency action</string>
+    <string name="sign_up_with_email_id">Sign Up With Email ID</string>
+    <string name="sign_up_with_google">Sign Up With Google</string>
+    <string name="sign_in_text">Already have an account? <u>Sign in</u></string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_to_langkah">Welcome to Langkah!</string>
+    <string name="register_your_new_account">Register your new account!</string>
+    <string name="full_name">Full Name</string>
+    <string name="fill_in_your_full_name">Fill in your full name</string>
+    <string name="email">Email</string>
+    <string name="fill_in_your_email">Fill in your email</string>
+    <string name="password">Password</string>
+    <string name="fill_in_your_password">Fill in your password</string>
+    <string name="re_type_password">Re-Type Password</string>
+    <string name="continue_step">Continue</string>
+    <string name="one_step_closer">One Step Closer!</string>
+    <string name="complete_the_form">Complete the form and you are ready!</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="fill_in_your_phone_number">Fill in your phone number</string>
+    <string name="fill_in_your_address">Fill in your address</string>
+    <string name="home_address">Home Address</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="sign_in_to_your_account">Sign in to your account!</string>
+    <string name="sign_in">Sign In</string>
+    <string name="don_t_have_an_account_sign_up">Don’t have an account? <u>Sign Up</u></string>
+    <string name="home">Home</string>
+    <string name="hospital">Hospital</string>
+    <string name="consultation">Consultation</string>
+    <string name="profile">Profile</string>
+    <string name="title_activity_app">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="hello_text">Hello, Jane!</string>
+    <string name="you_are_at">You are at</string>
+    <string name="your_location">Jakarta, Indonesia</string>
+    <string name="refresh_location">Refresh</string>
+    <string name="hospital_near_you">Hospital Near You</string>
+    <string name="emergency">Emergency!</string>
+    <string name="emergency_desc">Call nearest hospital for emergency situation!</string>
+    <string name="call">Call</string>
+</resources>
