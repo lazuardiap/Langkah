@@ -47,4 +47,6 @@
     <string name="emergency">Emergency!</string>
     <string name="emergency_desc">Call nearest hospital for emergency situation!</string>
     <string name="call">Call</string>
+    <string name="hospital_name">Hospital Name</string>
+    <string name="hospital_description">Hospital Description</string>
 </resources>
