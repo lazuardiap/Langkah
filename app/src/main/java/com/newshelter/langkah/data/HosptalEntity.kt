@@ -7,7 +7,7 @@ data class HosptalEntity(
     var address: String,
     var phoneNumber: String,
     var facilities: ArrayList<String>,
-    var polyclinics: ArrayList<PolyclinicsEntity>,
-    var doctors: ArrayList<DoctorsEntity>,
-    var rooms: ArrayList<RoomEntity>
+    var polyclinics: List<PolyclinicsEntity>,
+    var doctors: List<DoctorsEntity>,
+    var rooms: List<RoomEntity>
 )
