@@ -1,5 +1,6 @@
 package com.newshelter.langkah
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.newshelter.langkah.data.HosptalEntity
@@ -9,19 +10,31 @@ class HospitalAdapter : RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder>
 
     private val listHospital = ArrayList<HosptalEntity>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HospitalAdapter.HospitalViewHolder {
-        TODO("Not yet implemented")
+    fun setHospital(hospital: List<HosptalEntity>){
+        if (hospital == null) return
+        this.listHospital.clear()
+        this.listHospital.addAll(hospital)
     }
 
-    override fun onBindViewHolder(holder: HospitalAdapter.HospitalViewHolder, position: Int) {
-        TODO("Not yet implemented")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HospitalViewHolder {
+        val binding = ItemsHospitalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return HospitalViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+    override fun onBindViewHolder(holder: HospitalViewHolder, position: Int) {
+        val hospital = listHospital[position]
+        holder.bind(hospital)
     }
+
+    override fun getItemCount(): Int = listHospital.size
 
     class HospitalViewHolder(private val binding: ItemsHospitalBinding) : RecyclerView.ViewHolder(binding.root) {
 
+        fun bind(hospital: HosptalEntity){
+            with(binding){
+                tvItemName.text = hospital.hospitalName
+                tvItemAddress.text = hospital.address
+            }
+        }
     }
 }
