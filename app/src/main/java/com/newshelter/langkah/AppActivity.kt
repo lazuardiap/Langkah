@@ -18,14 +18,14 @@ class AppActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAppBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.navigation_home, R.id.navigation_hospital, R.id.navigation_consultation, R.id.navigation_profile
-        ).build()
+//        val appBarConfiguration = AppBarConfiguration.Builder(
+//            R.id.navigation_home, R.id.navigation_hospital, R.id.navigation_consultation, R.id.navigation_profile
+//        ).build()
+//        setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.navView.setupWithNavController(navController)
     }

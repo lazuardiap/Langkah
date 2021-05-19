@@ -54,6 +54,44 @@ object DataDummy {
                 )
         )
 
+        hospital.add(
+                HosptalEntity(
+                        "hos-02",
+                        "Rumah Sakit Abdi Waluyo Jkt",
+                        "RSCM atau Rumah Sakit Pusat Nasional Umum  Dr. Cipto Mangunkusumo adalah \n" +
+                                "rumah sakit umum milik pemerintah dengan pelayanan terlengkap di Indonesia. \n" +
+                                "Status tersebut diberikan melalui SK Menkes no YM.01.10/III/2212/2009.",
+                        "Jl. HOS. Cokroaminoto No.31-33, RT.1/RW.3, \n" +
+                                "Gondangdia, Kec. Menteng, Kota Jakarta Pusat, \n" +
+                                "Daerah Khusus Ibukota Jakarta 10350",
+                        "0821342213213",
+                        arrayListOf("Pelayanan Rawat Jalan", "Pelayanan Rawat Inap", "Pelayanan Gudang", "Rumah Singgah",
+                                "Masjid/Mushola", "Tempat Parkir"),
+                        polyclinics,
+                        doctors,
+                        rooms
+                )
+        )
+
+        hospital.add(
+                HosptalEntity(
+                        "hos-02",
+                        "Rumah Sakit Abdi Waluyo Jkt",
+                        "RSCM atau Rumah Sakit Pusat Nasional Umum  Dr. Cipto Mangunkusumo adalah \n" +
+                                "rumah sakit umum milik pemerintah dengan pelayanan terlengkap di Indonesia. \n" +
+                                "Status tersebut diberikan melalui SK Menkes no YM.01.10/III/2212/2009.",
+                        "Jl. HOS. Cokroaminoto No.31-33, RT.1/RW.3, \n" +
+                                "Gondangdia, Kec. Menteng, Kota Jakarta Pusat, \n" +
+                                "Daerah Khusus Ibukota Jakarta 10350",
+                        "0821342213213",
+                        arrayListOf("Pelayanan Rawat Jalan", "Pelayanan Rawat Inap", "Pelayanan Gudang", "Rumah Singgah",
+                                "Masjid/Mushola", "Tempat Parkir"),
+                        polyclinics,
+                        doctors,
+                        rooms
+                )
+        )
+
         return hospital
     }
 

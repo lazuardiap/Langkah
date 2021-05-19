@@ -1,11 +1,14 @@
-package com.newshelter.langkah
+package com.newshelter.langkah.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.newshelter.langkah.databinding.FragmentHomeBinding
+import com.newshelter.langkah.ui.hospital.HospitalAdapter
+import com.newshelter.langkah.utils.DataDummy
 
 
 class HomeFragment : Fragment() {
@@ -26,13 +29,21 @@ class HomeFragment : Fragment() {
 
         if (activity != null){
 
-            val fm = fragmentManager
-            val mHospitalFragment = HospitalFragment()
-            fm?.beginTransaction()
-                    ?.add(R.id.nearest_hospital_container, mHospitalFragment, HospitalFragment::class.java.simpleName)
-                    ?.commit()
+            val hospitals = DataDummy.generateDummyHospital()
+
+            val hospitalAdapter = HospitalAdapter()
+
+            hospitalAdapter.setHospital(hospitals)
+
+            with(binding.rvHospital){
+                layoutManager = LinearLayoutManager(context)
+                setHasFixedSize(true)
+                adapter = hospitalAdapter
+            }
+
 
         }
+
     }
 
 }
