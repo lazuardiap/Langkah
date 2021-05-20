@@ -29,8 +29,8 @@ class LoginFragment : Fragment() {
             with(binding){
 
                 btnClose.setOnClickListener{
-                    val mFragmentManager = fragmentManager
-                    mFragmentManager?.popBackStack()
+                    val mFragmentManager = parentFragmentManager
+                    mFragmentManager.popBackStack()
                 }
 
                 signInBtn.setOnClickListener{

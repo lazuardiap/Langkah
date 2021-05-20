@@ -1,7 +1,9 @@
 package com.newshelter.langkah.ui.hospital
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.newshelter.langkah.data.HosptalEntity
 import com.newshelter.langkah.databinding.ItemsHospitalBinding
@@ -41,6 +43,15 @@ class HospitalAdapter : RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder>
             with(binding){
                 tvItemName.text = hospital.hospitalName
                 tvItemAddress.text = hospital.address
+                itemView.setOnClickListener {
+                    val mHospitalDetailFragment = HospitalDetailFragment()
+
+                    val mBundle = Bundle()
+                    mBundle.putString(HospitalDetailFragment.EXTRA_HOSPITAL_ID, hospital.hospitalId)
+                    mHospitalDetailFragment.arguments = mBundle
+
+
+                }
             }
         }
     }

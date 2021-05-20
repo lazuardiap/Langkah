@@ -27,15 +27,15 @@ class FragmentSignUpWithEmail : Fragment() {
         if (activity != null){
             with(binding){
                 btnClose.setOnClickListener{
-                    val mFragmentManager = fragmentManager
-                    mFragmentManager?.popBackStack()
+                    val mFragmentManager = parentFragmentManager
+                    mFragmentManager.popBackStack()
                 }
 
                 btnContinue.setOnClickListener{
                     val mStep2Fragment = Step2Fragment()
-                    val mFragmentManager = fragmentManager
+                    val mFragmentManager = parentFragmentManager
 
-                    mFragmentManager?.beginTransaction()?.apply {
+                    mFragmentManager.beginTransaction().apply {
                         replace(R.id.frame_container, mStep2Fragment, Step2Fragment::class.java.simpleName)
                         addToBackStack(null)
                         commit()
@@ -44,9 +44,9 @@ class FragmentSignUpWithEmail : Fragment() {
 
                 signInText.setOnClickListener{
                     val mFragmentSignIn = LoginFragment()
-                    val mFragmentManager = fragmentManager
+                    val mFragmentManager = parentFragmentManager
 
-                    mFragmentManager?.beginTransaction()?.apply {
+                    mFragmentManager.beginTransaction().apply {
                         replace(R.id.frame_container, mFragmentSignIn, LoginFragment::class.java.simpleName)
                         addToBackStack(null)
                         commit()

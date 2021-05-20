@@ -48,5 +48,15 @@
     <string name="emergency_desc">Call nearest hospital for emergency situation!</string>
     <string name="call">Call</string>
     <string name="hospital_name">Hospital Name</string>
+    <string name="closest_hospital_title_page">Closest Hospital</string>
+    <string name="closest_hospital_description">Here is the list of available doctors in the hospital!</string>
+    <string name="search_hospital_hint">Search Hospital</string>
+    <string name="description">Description</string>
     <string name="hospital_description">Hospital Description</string>
+    <string name="address">Address</string>
+    <string name="hospital_address">Hospital Address</string>
+    <string name="locate">Locate</string>
+    <string name="make_an_appointment">Make an Appointment</string>
+    <string name="see_queue">See Queue</string>
+    <string name="facilities">Facilities</string>
 </resources>

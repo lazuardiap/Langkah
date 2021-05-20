@@ -173,7 +173,6 @@
             android:fontFamily="@font/now_bold"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/blue_main"
             android:text="@string/continue_step"
             android:textAllCaps="false"
             android:textSize="16sp"

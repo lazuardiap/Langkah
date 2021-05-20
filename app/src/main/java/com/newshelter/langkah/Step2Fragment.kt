@@ -25,8 +25,8 @@ class Step2Fragment : Fragment() {
         if (activity != null){
             with(binding){
                 btnBack.setOnClickListener{
-                    val mFragmentManager = fragmentManager
-                    mFragmentManager?.popBackStack()
+                    val mFragmentManager = parentFragmentManager
+                    mFragmentManager.popBackStack()
                 }
 
                 btnSignUp.setOnClickListener{
