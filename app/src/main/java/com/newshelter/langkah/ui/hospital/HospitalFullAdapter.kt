@@ -1,5 +1,6 @@
 package com.newshelter.langkah.ui.hospital
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +36,12 @@ class HospitalFullAdapter : RecyclerView.Adapter<HospitalFullAdapter.HospitalFul
             with(binding){
                 tvItemName.text = hospital.hospitalName
                 tvItemAddress.text = hospital.address
+
+                itemView.setOnClickListener {
+                    val i = Intent(itemView.context, HospitalDetailActivity::class.java)
+                    i.putExtra(HospitalDetailActivity.EXTRA_ID, hospital.hospitalId)
+                    itemView.context.startActivity(i)
+                }
             }
         }
 

@@ -56,7 +56,7 @@ object DataDummy {
 
         hospital.add(
                 HosptalEntity(
-                        "hos-02",
+                        "hos-03",
                         "Rumah Sakit Abdi Waluyo Jkt",
                         "RSCM atau Rumah Sakit Pusat Nasional Umum  Dr. Cipto Mangunkusumo adalah \n" +
                                 "rumah sakit umum milik pemerintah dengan pelayanan terlengkap di Indonesia. \n" +
@@ -75,7 +75,7 @@ object DataDummy {
 
         hospital.add(
                 HosptalEntity(
-                        "hos-02",
+                        "hos-04",
                         "Rumah Sakit Abdi Waluyo Jkt",
                         "RSCM atau Rumah Sakit Pusat Nasional Umum  Dr. Cipto Mangunkusumo adalah \n" +
                                 "rumah sakit umum milik pemerintah dengan pelayanan terlengkap di Indonesia. \n" +

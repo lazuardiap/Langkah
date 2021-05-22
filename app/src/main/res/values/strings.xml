@@ -59,4 +59,12 @@
     <string name="make_an_appointment">Make an Appointment</string>
     <string name="see_queue">See Queue</string>
     <string name="facilities">Facilities</string>
+    <string name="doctor_section">Doctor</string>
+    <string name="poly_section">Polyclinics</string>
+    <string name="doctor_name">Doctor\'s Name</string>
+    <string name="doctor_specialist">Doctor\'s Specialist</string>
+    <string name="see_rooms">See Rooms</string>
+    <string name="view_all_doctors">View All Doctors</string>
+    <string name="view_all_polys">View All Polyclinics</string>
+    <string name="polyclinics_name">Polyclinics Name</string>
 </resources>

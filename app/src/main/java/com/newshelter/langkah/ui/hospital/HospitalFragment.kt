@@ -52,7 +52,9 @@ class HospitalFragment : Fragment() {
                 }
             }
 
+
         }
     }
+
 
 }

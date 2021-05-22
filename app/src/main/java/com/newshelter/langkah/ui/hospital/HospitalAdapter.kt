@@ -1,17 +1,21 @@
 package com.newshelter.langkah.ui.hospital
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.newshelter.langkah.LandingActivity
 import com.newshelter.langkah.data.HosptalEntity
 import com.newshelter.langkah.databinding.ItemsHospitalBinding
 
-class HospitalAdapter : RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder>() {
+class HospitalAdapter :  RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder>(){
 
     private val listHospital = ArrayList<HosptalEntity>()
     private val limit = 3
+
+
 
     fun setHospital(hospital: List<HosptalEntity>?){
         if (hospital == null) return
@@ -26,6 +30,7 @@ class HospitalAdapter : RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder>
 
     override fun onBindViewHolder(holder: HospitalViewHolder, position: Int) {
         val hospital = listHospital[position]
+
         holder.bind(hospital)
     }
 
@@ -43,16 +48,14 @@ class HospitalAdapter : RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder>
             with(binding){
                 tvItemName.text = hospital.hospitalName
                 tvItemAddress.text = hospital.address
+
                 itemView.setOnClickListener {
-                    val mHospitalDetailFragment = HospitalDetailFragment()
-
-                    val mBundle = Bundle()
-                    mBundle.putString(HospitalDetailFragment.EXTRA_HOSPITAL_ID, hospital.hospitalId)
-                    mHospitalDetailFragment.arguments = mBundle
-
-
+                    val i = Intent(itemView.context, HospitalDetailActivity::class.java)
+                    i.putExtra(HospitalDetailActivity.EXTRA_ID, hospital.hospitalId)
+                    itemView.context.startActivity(i)
                 }
             }
         }
     }
+
 }
