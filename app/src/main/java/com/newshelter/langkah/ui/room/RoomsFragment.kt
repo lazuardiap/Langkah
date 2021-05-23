@@ -41,7 +41,7 @@ class RoomsFragment : Fragment() {
 
             for (hospital in dummy){
                 if (hospital.hospitalId == id){
-                    roomAdapter.setRoom(hospital.rooms)
+                    roomAdapter.setRoom(hospital.rooms, hospital.hospitalId)
                     binding.tvHospitalName.text = hospital.hospitalName
                 }
             }
