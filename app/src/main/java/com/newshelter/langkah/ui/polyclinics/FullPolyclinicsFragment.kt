@@ -39,7 +39,7 @@ class FullPolyclinicsFragment : Fragment() {
 
             for (hospital in dummy){
                 if (hospital.hospitalId == id){
-                    fullPolyAdapter.setPoly(hospital.polyclinics)
+                    fullPolyAdapter.setPoly(hospital.polyclinics, hospital.hospitalId)
                 }
             }
         }
