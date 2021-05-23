@@ -28,7 +28,6 @@ class Step2Fragment : Fragment() {
                     val mFragmentManager = parentFragmentManager
                     mFragmentManager.popBackStack()
                 }
-
                 btnSignUp.setOnClickListener{
                     val i = Intent(context, AppActivity::class.java)
                     startActivity(i)
