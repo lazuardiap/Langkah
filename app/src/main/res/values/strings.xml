@@ -67,5 +67,8 @@
     <string name="view_all_doctors">View All Doctors</string>
     <string name="view_all_polys">View All Polyclinics</string>
     <string name="polyclinics_name">Polyclinic\'s Name</string>
+    <string name="doctors_page_title">The Doctors</string>
+    <string name="doctors_page_desc">Here is the list of available doctors in the hospital!</string>
+    <string name="search_doctor_hint">Search Doctor</string>
 
 </resources>
