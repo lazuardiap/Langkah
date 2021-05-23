@@ -50,6 +50,28 @@ class SmallPolyclinicsFragment : Fragment() {
             setHasFixedSize(true)
             adapter = smallPolyAdapter
         }
+
+        binding.btnViewAll.setOnClickListener{
+            val mFull = FullPolyclinicsFragment()
+            val fm = parentFragmentManager
+
+            val id = arguments?.getString(EXTRA_ID)
+
+            val bundle = Bundle()
+
+            bundle.putString(FullPolyclinicsFragment.EXTRA_ID, id)
+
+            mFull.arguments = bundle
+
+            fm.beginTransaction().apply {
+                replace(R.id.frame_container, mFull, FullPolyclinicsFragment::class.java.simpleName)
+                addToBackStack(null)
+                commit()
+            }
+
+        }
+
+
     }
 
 
