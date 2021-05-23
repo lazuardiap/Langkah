@@ -1,9 +1,6 @@
 package com.newshelter.langkah.utils
 
-import com.newshelter.langkah.data.DoctorsEntity
-import com.newshelter.langkah.data.HosptalEntity
-import com.newshelter.langkah.data.PolyclinicsEntity
-import com.newshelter.langkah.data.RoomEntity
+import com.newshelter.langkah.data.*
 
 object DataDummy {
 
@@ -172,5 +169,51 @@ object DataDummy {
         )
 
         return room
+    }
+
+    fun generateDummySchedule() : List<ScheduleEntity>{
+        val sch = ArrayList<ScheduleEntity>()
+
+        sch.add(
+            ScheduleEntity(
+                "sch-01",
+                "hos-01",
+                "doc-01",
+                arrayListOf("Monday 09:00-12:00", "Tuesday 12:00-15:00")
+            )
+        )
+
+
+        sch.add(
+            ScheduleEntity(
+                "sch-02",
+                "hos-02",
+                "doc-01",
+                arrayListOf("Tuesday 12:00-15:00", "Wednesday 12:00-15:00")
+            )
+        )
+
+        sch.add(
+            ScheduleEntity(
+                "sch-03",
+                "hos-01",
+                "doc-02",
+                arrayListOf("Tuesday 12:00-15:00", "Thursday 12:00-15:00")
+            )
+        )
+
+
+        sch.add(
+            ScheduleEntity(
+                "sch-04",
+                "hos-02",
+                "doc-02",
+                arrayListOf("Friday 12:00-15:00")
+            )
+        )
+
+
+
+        return sch
     }
 }

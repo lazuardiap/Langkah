@@ -1,5 +1,6 @@
 package com.newshelter.langkah.ui.doctors
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +36,11 @@ class FullDoctorAdapter : RecyclerView.Adapter<FullDoctorAdapter.FullDoctorVh>()
                 tvItemName.text = doctor.doctorName
                 tvItemSpecialist.text = doctor.doctorSpecialist
 
+                itemView.setOnClickListener {
+                    val i = Intent(itemView.context, DoctorDetailsActivity::class.java)
+                    i.putExtra(DoctorDetailsActivity.EXTRA_ID, doctor.doctorId)
+                    itemView.context.startActivity(i)
+                }
             }
         }
 
