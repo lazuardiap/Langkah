@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".ui.room.RoomDetailActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_room"
+        android:layout_width="match_parent"
+        android:layout_height="216dp"
+        android:adjustViewBounds="true"
+        android:src="@color/light_grey"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_room_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/now_bold"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/iv_room"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/room_type"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_hospital_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/now_medium"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_room_type"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/hospital_name"/>
+
+    <TableLayout
+        android:id="@+id/price_table"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_hospital_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TableRow android:background="@color/blue_accent">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_column="1"
+                android:fontFamily="@font/now_medium"
+                android:textColor="@color/white"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:text="@string/price_per_day"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_column="1"
+                android:fontFamily="@font/now_medium"
+                android:textColor="@color/white"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:text="@string/dp"/>
+
+
+        </TableRow>
+
+        <TableRow >
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_price_per_day"
+            android:layout_column="1"
+            android:fontFamily="@font/now_regular"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:text="@string/sample_price"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_dp"
+                android:layout_column="1"
+                android:fontFamily="@font/now_regular"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:text="@string/sample_price"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/service_table"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/price_table"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TableRow android:background="@color/blue_accent">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_column="1"
+                android:fontFamily="@font/now_medium"
+                android:textColor="@color/white"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:text="@string/services"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_column="1"
+                android:fontFamily="@font/now_medium"
+                android:textColor="@color/white"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:text="@string/pre_inspection" />
+        </TableRow>
+
+        <TableRow>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_services_price"
+                android:layout_column="1"
+                android:fontFamily="@font/now_regular"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:text="@string/sample_price"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_preinspect_price"
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:fontFamily="@font/now_regular"
+                android:padding="8dp"
+                android:textAlignment="center"
+                android:text="@string/sample_price" />
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

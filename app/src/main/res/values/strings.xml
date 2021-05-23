@@ -81,5 +81,10 @@
     <string name="room_page_desc">Here is the list of available rooms in the hospital!</string>
     <string name="search_room_hint">Search Room</string>
     <string name="room_type">Room Type</string>
+    <string name="price_per_day">Price/Day</string>
+    <string name="dp">DP</string>
+    <string name="services">Services</string>
+    <string name="pre_inspection">Pre-Inspection</string>
+    <string name="sample_price">Rp 1000,00</string>
 
 </resources>
