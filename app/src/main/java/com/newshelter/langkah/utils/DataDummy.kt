@@ -216,4 +216,51 @@ object DataDummy {
 
         return sch
     }
+
+    fun generateDummyPolySchedule() : List<PolyScheduleEntity>{
+
+        val sch = ArrayList<PolyScheduleEntity>()
+
+        sch.add(
+            PolyScheduleEntity(
+                "sch-05",
+                "hos-01",
+                "poly-01",
+                arrayListOf("Monday 09:00-12:00", "Tuesday 12:00-15:00")
+            )
+        )
+
+
+        sch.add(
+            PolyScheduleEntity(
+                "sch-06",
+                "hos-02",
+                "poly-01",
+                arrayListOf("Tuesday 12:00-15:00", "Wednesday 12:00-15:00")
+            )
+        )
+
+        sch.add(
+            PolyScheduleEntity(
+                "sch-07",
+                "hos-01",
+                "poly-02",
+                arrayListOf("Tuesday 12:00-15:00", "Thursday 12:00-15:00")
+            )
+        )
+
+
+        sch.add(
+            PolyScheduleEntity(
+                "sch-08",
+                "hos-02",
+                "poly-02",
+                arrayListOf("Friday 12:00-15:00")
+            )
+        )
+
+
+
+        return sch
+    }
 }

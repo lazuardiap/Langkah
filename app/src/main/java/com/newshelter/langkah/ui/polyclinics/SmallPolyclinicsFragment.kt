@@ -40,7 +40,7 @@ class SmallPolyclinicsFragment : Fragment() {
 
             for (hospital in dummy){
                 if (hospital.hospitalId == id){
-                    smallPolyAdapter.setPoly(hospital.polyclinics)
+                    smallPolyAdapter.setPoly(hospital.polyclinics, hospital.hospitalId)
                 }
             }
         }

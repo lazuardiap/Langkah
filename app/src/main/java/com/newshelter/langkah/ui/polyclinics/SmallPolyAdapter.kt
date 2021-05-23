@@ -1,5 +1,6 @@
 package com.newshelter.langkah.ui.polyclinics
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,11 +11,13 @@ class SmallPolyAdapter : RecyclerView.Adapter<SmallPolyAdapter.SmallPolyVh>() {
 
     private val listPolys = ArrayList<PolyclinicsEntity>()
     private val limit = 2
+    private lateinit var hospitalId : String
 
-    fun setPoly(p : List<PolyclinicsEntity>?){
+    fun setPoly(p : List<PolyclinicsEntity>?, hospitalId : String){
         if (p == null) return
         this.listPolys.clear()
         this.listPolys.addAll(p)
+        this.hospitalId = hospitalId
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SmallPolyVh {
@@ -24,7 +27,7 @@ class SmallPolyAdapter : RecyclerView.Adapter<SmallPolyAdapter.SmallPolyVh>() {
 
     override fun onBindViewHolder(holder: SmallPolyVh, position: Int) {
         val poly = listPolys[position]
-        holder.bind(poly)
+        holder.bind(poly, hospitalId)
     }
 
     override fun getItemCount(): Int {
@@ -37,9 +40,16 @@ class SmallPolyAdapter : RecyclerView.Adapter<SmallPolyAdapter.SmallPolyVh>() {
 
     class SmallPolyVh (private val binding : ItemsPolyBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(poly : PolyclinicsEntity){
+        fun bind(poly : PolyclinicsEntity, hospitalId : String){
             with(binding){
                 tvItemName.text = poly.polyName
+
+                itemView.setOnClickListener {
+                    val i = Intent(itemView.context, PolyclinicDetailsActivity::class.java)
+                    i.putExtra(PolyclinicDetailsActivity.EXTRA_ID, poly.polyId)
+                    i.putExtra(PolyclinicDetailsActivity.EXTRA_HOSPITAL_ID, hospitalId)
+                    itemView.context.startActivity(i)
+                }
             }
         }
 
