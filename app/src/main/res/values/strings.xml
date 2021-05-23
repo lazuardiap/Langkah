@@ -77,5 +77,9 @@
     <string name="polyclinics_page_title">The Polyclinics</string>
     <string name="polyclinics_page_desc">Here is the list of available polyclinics in the hospital!</string>
     <string name="search_polyclinic_hint">Search Polyclinic</string>
+    <string name="room_page_title">Room Facility</string>
+    <string name="room_page_desc">Here is the list of available rooms in the hospital!</string>
+    <string name="search_room_hint">Search Room</string>
+    <string name="room_type">Room Type</string>
 
 </resources>
