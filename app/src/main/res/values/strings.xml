@@ -74,5 +74,8 @@
     <string name="tv_doctor_profile">Doctor Profile</string>
     <string name="doctor_schedule_text">Schedule</string>
     <string name="sample_schedule">Monday 09:00 - 15:00</string>
+    <string name="polyclinics_page_title">The Polyclinics</string>
+    <string name="polyclinics_page_desc">Here is the list of available polyclinics in the hospital!</string>
+    <string name="search_polyclinic_hint">Search Polyclinic</string>
 
 </resources>
