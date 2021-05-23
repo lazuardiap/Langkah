@@ -61,14 +61,18 @@
     <string name="facilities">Facilities</string>
     <string name="doctor_section">Doctor</string>
     <string name="poly_section">Polyclinics</string>
-    <string name="doctor_name">Doctor\'s Name</string>
-    <string name="doctor_specialist">Doctor\'s Specialist</string>
+    <string name="doctor_name">Doctor Name</string>
+    <string name="doctor_specialist">Doctor Specialist</string>
     <string name="see_rooms">See Rooms</string>
     <string name="view_all_doctors">View All Doctors</string>
     <string name="view_all_polys">View All Polyclinics</string>
-    <string name="polyclinics_name">Polyclinic\'s Name</string>
+    <string name="polyclinics_name">Polyclinic Name</string>
     <string name="doctors_page_title">The Doctors</string>
     <string name="doctors_page_desc">Here is the list of available doctors in the hospital!</string>
     <string name="search_doctor_hint">Search Doctor</string>
+    <string name="doctor_profile_text">Profile</string>
+    <string name="tv_doctor_profile">Doctor Profile</string>
+    <string name="doctor_schedule_text">Schedule</string>
+    <string name="sample_schedule">Monday 09:00 - 15:00</string>
 
 </resources>
