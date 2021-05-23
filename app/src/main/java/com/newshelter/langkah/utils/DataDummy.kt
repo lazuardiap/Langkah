@@ -151,6 +151,10 @@ object DataDummy {
                 RoomEntity(
                         "room-01",
                         "VIP",
+                    "Rp 1.500.000, 00",
+                "Rp 150.000, 00",
+                "Rp 250.000, 00",
+                    "Rp 150.000, 00"
                 )
         )
 
@@ -158,6 +162,10 @@ object DataDummy {
                 RoomEntity(
                         "room-02",
                         "VVIP",
+                    "Rp 2.500.000, 00",
+                    "Rp 250.000, 00",
+                    "Rp 350.000, 00",
+                    "Rp 250.000, 00"
                 )
         )
 
@@ -165,6 +173,10 @@ object DataDummy {
                 RoomEntity(
                         "room-03",
                         "Kelas I",
+                    "Rp 1.000.000, 00",
+                    "Rp 100.000, 00",
+                    "Rp 200.000, 00",
+                    "Rp 100.000, 00"
                 )
         )
 
