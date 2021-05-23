@@ -57,7 +57,9 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
 
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+
     implementation 'com.google.firebase:firebase-auth:21.0.1'
+    implementation 'com.github.florent37:expansionpanel:1.2.4'
 
     //testing
     testImplementation "junit:junit:$junitVersion"

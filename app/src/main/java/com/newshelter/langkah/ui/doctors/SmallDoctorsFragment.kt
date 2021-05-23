@@ -56,6 +56,27 @@ class SmallDoctorsFragment : Fragment() {
             setHasFixedSize(true)
             adapter = smallDoctorAdapter
         }
+
+        binding.btnViewAll.setOnClickListener{
+            val mFullDoctorFragment = FullDoctorFragment()
+            val fm = parentFragmentManager
+
+            val id = arguments?.getString(EXTRA_ID)
+
+            val bundle = Bundle()
+
+            bundle.putString(FullDoctorFragment.EXTRA_ID, id)
+
+            mFullDoctorFragment.arguments = bundle
+
+            fm.beginTransaction().apply {
+                replace(R.id.frame_container, mFullDoctorFragment, FullDoctorFragment::class.java.simpleName)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+
     }
 
 
