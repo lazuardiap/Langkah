@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.newshelter.langkah.R
 import com.newshelter.langkah.databinding.FragmentFullPolyclinicsBinding
 import com.newshelter.langkah.utils.DataDummy
@@ -54,6 +55,10 @@ class FullPolyclinicsFragment : Fragment() {
             val mFragmentManager = parentFragmentManager
             mFragmentManager.popBackStack()
         }
+
+        Glide.with(requireActivity())
+            .load(R.drawable.polyclinics)
+            .into(binding.polysImg)
     }
 
 }

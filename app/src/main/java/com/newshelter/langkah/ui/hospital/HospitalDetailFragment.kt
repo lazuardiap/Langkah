@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayoutMediator
 import com.newshelter.langkah.R
 import com.newshelter.langkah.databinding.FragmentHospitalDetailBinding
+import com.newshelter.langkah.ui.doctors.SmallDoctorsFragment
+import com.newshelter.langkah.ui.polyclinics.SmallPolyclinicsFragment
+import com.newshelter.langkah.ui.room.RoomsFragment
 import com.newshelter.langkah.ui.sectionpager.DetailSectionPagerAdapter
 import com.newshelter.langkah.utils.DataDummy
 
@@ -34,7 +37,11 @@ class HospitalDetailFragment : Fragment() {
         binding = FragmentHospitalDetailBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
-    
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -72,6 +79,23 @@ class HospitalDetailFragment : Fragment() {
                             tab.text = resources.getString(TAB_TITLES[position])
                         }.attach()
 
+                        btnRoom.setOnClickListener{
+                            val fm = parentFragmentManager
+
+                            val mRoomFragment = RoomsFragment()
+
+                            val bundle = Bundle()
+
+                            bundle.putString(RoomsFragment.EXTRA_ID, hospital.hospitalId)
+
+                            mRoomFragment.arguments = bundle
+
+                            fm.beginTransaction().apply {
+                                replace(R.id.frame_container, mRoomFragment, RoomsFragment::class.java.simpleName)
+                                addToBackStack(null)
+                                commit()
+                            }
+                        }
 
                     }
 
