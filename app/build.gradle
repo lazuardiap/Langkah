@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
+apply plugin: 'com.google.gms.google-services'
+
 
 android {
     compileSdkVersion 30
@@ -55,6 +57,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
 
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
 
     //testing
     testImplementation "junit:junit:$junitVersion"
@@ -70,5 +73,8 @@ dependencies {
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
     implementation "androidx.test.espresso:espresso-idling-resource:$idleResourceVersion"
 
+
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:28.0.1')
 
 }

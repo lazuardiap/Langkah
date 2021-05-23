@@ -1,16 +1,20 @@
 package com.newshelter.langkah
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.newshelter.langkah.databinding.FragmentLandingBinding
 
 class FragmentLanding : Fragment() {
 
     private lateinit var binding : FragmentLandingBinding
+    private lateinit var auth: FirebaseAuth
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,6 +22,8 @@ class FragmentLanding : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentLandingBinding.inflate(layoutInflater)
+
+        auth = FirebaseAuth.getInstance()
         return binding.root
     }
 
@@ -60,4 +66,11 @@ class FragmentLanding : Fragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (auth.currentUser != null) {
+            val i = Intent(context, AppActivity::class.java)
+            startActivity(i)
+        }
+    }
 }
