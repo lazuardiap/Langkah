@@ -1,23 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
+    android:padding="24dp"
     tools:context=".ui.profile.ProfileFragment">
 
-    <TextView
-        android:id="@+id/text_dashboard"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/account_circle"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/blue_account_circle_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/now_bold"
+            android:textSize="20sp"
+            android:layout_marginStart="8dp"
+            android:text="@string/sample_name"
+            app:layout_constraintTop_toTopOf="@id/account_circle"
+            app:layout_constraintStart_toEndOf="@id/account_circle"
+            app:layout_constraintEnd_toStartOf="@id/btn_edit"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_user_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/now_regular"
+            android:layout_marginTop="4dp"
+            android:text="@string/sample_email"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_name"
+            app:layout_constraintStart_toStartOf="@id/tv_user_name"
+            app:layout_constraintEnd_toStartOf="@id/btn_edit"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_user_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/now_regular"
+            android:layout_marginTop="4dp"
+            android:text="@string/sample_phone"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_email"
+            app:layout_constraintStart_toStartOf="@id/tv_user_name"
+            app:layout_constraintEnd_toStartOf="@id/btn_edit"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/edit_24"
+            app:layout_constraintTop_toTopOf="@id/account_circle"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_no_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/now_medium"
+            android:text="@string/sample_status"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/no_appointment"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_phone"
+            app:layout_constraintStart_toStartOf="@id/tv_user_name"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_process_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/now_medium"
+            android:text="@string/sample_status"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            android:background="@color/appointment_on_process"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_phone"
+            app:layout_constraintStart_toStartOf="@id/tv_user_name"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_made_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/now_medium"
+            android:text="@string/sample_status"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            android:background="@color/appointment_made"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_phone"
+            app:layout_constraintStart_toStartOf="@id/tv_user_name"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/frame_appointment_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_no_status"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/now_bold"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/blue_main"
+            android:text="@string/change_password"
+            app:layout_constraintTop_toBottomOf="@id/frame_appointment_container"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_sign_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/now_bold"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="48dp"
+            android:backgroundTint="@color/soft_red"
+            android:text="@string/sign_out"
+            app:layout_constraintTop_toBottomOf="@id/btn_change_password"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</ScrollView>

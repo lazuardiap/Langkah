@@ -27,7 +27,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/title_page"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/now_bold"
         android:textSize="20sp"
@@ -35,6 +35,7 @@
         app:layout_constraintTop_toTopOf="@+id/queue_img"
         app:layout_constraintLeft_toRightOf="@id/queue_img"
         app:layout_constraintBottom_toTopOf="@id/description_page"
+        app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/queue_page_title"/>
 
     <com.google.android.material.textview.MaterialTextView
