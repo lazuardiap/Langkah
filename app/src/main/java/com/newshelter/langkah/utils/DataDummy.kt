@@ -275,4 +275,82 @@ object DataDummy {
 
         return sch
     }
+
+    fun generateDummyUser() : List<UserEntity>{
+        val users = ArrayList<UserEntity>()
+
+        users.add(
+            UserEntity(
+                "user-01",
+                "janedoe@example.com",
+                "Jane Doe",
+                "12345",
+                "082187645379",
+                "Perumahan Resinda Blok blabla, Karawang, Indonesia",
+            "",
+                "3"
+            )
+        )
+
+        users.add(
+            UserEntity(
+                "user-02",
+                "williamscorch@example.com",
+                "William Scorch",
+                "12345",
+                "082187645379",
+                "Perumahan Resinda Blok blabla, Karawang, Indonesia",
+                "",
+                "2"
+            )
+        )
+
+        users.add(
+            UserEntity(
+                "user-03",
+                "xaviertone@example.com",
+                "Xavier Tone",
+                "12345",
+                "082187645379",
+                "Perumahan Resinda Blok blabla, Karawang, Indonesia",
+                "",
+                "1"
+            )
+        )
+
+        return users
+    }
+
+    fun generateDummyAppointment() : List<AppointmentEntity>{
+
+        val appointments = ArrayList<AppointmentEntity>()
+
+        appointments.add(
+            AppointmentEntity(
+                "app-01",
+                "user-02",
+                "18",
+                "hos-01",
+                "poly-01",
+                "doc-01",
+                "21-09-12",
+                "09:00"
+            )
+        )
+
+        appointments.add(
+            AppointmentEntity(
+                "app-02",
+                "user-03",
+                "21",
+                "hos-01",
+                "poly-01",
+                "doc-01",
+                "21-09-16",
+                "09:15"
+            )
+        )
+
+        return appointments
+    }
 }

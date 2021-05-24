@@ -9,13 +9,13 @@ import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
-class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
+class DateAppointmentPickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
-    private var mListener : DialogDateListener? = null
+    private var mListener : AppointmentDateListener? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        mListener = context as DialogDateListener?
+        mListener = context as AppointmentDateListener?
     }
 
     override fun onDetach() {
@@ -31,14 +31,15 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
         val month = calendar.get(Calendar.MONTH)
         val date = calendar.get(Calendar.DATE)
 
-        return DatePickerDialog(activity as Context , this, year, month, date)
+        return DatePickerDialog(activity as Context, this, year, month, date)
     }
 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, dayOfMonth: Int) {
-        mListener?.onDialogDateSet(tag, year, month, dayOfMonth)
+        mListener?.onAppointDateset(tag, year, month, dayOfMonth)
     }
 
-    interface DialogDateListener {
-        fun onDialogDateSet(tag: String?, year: Int, month: Int, dayOfMonth: Int)
+    interface AppointmentDateListener {
+        fun onAppointDateset(tag: String?, year: Int, month: Int, dayOfMonth: Int)
     }
+
 }
