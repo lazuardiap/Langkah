@@ -65,6 +65,7 @@
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvCurrentPlace"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/now_bold"
