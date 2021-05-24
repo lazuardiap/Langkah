@@ -72,6 +72,64 @@
         app:layout_constraintBottom_toBottomOf="@id/btn_once_date"/>
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/appointement_date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/now_medium"
+        android:text="@string/choose_date_and_time"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_once_date" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_appointment_date"
+        style="@style/Base.Widget.AppCompat.ImageButton"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_date_range_black"
+        app:layout_constraintTop_toBottomOf="@id/appointement_date_text"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_appointment_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/now_regular"
+        android:textColor="@color/blue_accent"
+        android:layout_marginStart="8dp"
+        android:text="@string/appointment_date"
+        app:layout_constraintTop_toTopOf="@id/btn_appointment_date"
+        app:layout_constraintStart_toEndOf="@id/btn_appointment_date"
+        app:layout_constraintBottom_toBottomOf="@id/btn_appointment_date"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_appointment_time"
+        style="@style/Base.Widget.AppCompat.ImageButton"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_access_time_black"
+        app:layout_constraintTop_toBottomOf="@id/appointement_date_text"
+        app:layout_constraintStart_toEndOf="@id/tv_appointment_date"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_appointment_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/now_regular"
+        android:textColor="@color/blue_accent"
+        android:layout_marginStart="8dp"
+        android:text="@string/appointment_time"
+        app:layout_constraintTop_toTopOf="@id/btn_appointment_time"
+        app:layout_constraintStart_toEndOf="@id/btn_appointment_time"
+        app:layout_constraintBottom_toBottomOf="@id/btn_appointment_time"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/choose_poly_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,7 +138,7 @@
         android:text="@string/choose_polyclinc_text"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_once_date" />
+        app:layout_constraintTop_toBottomOf="@id/btn_appointment_date" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/hospital_menu"
