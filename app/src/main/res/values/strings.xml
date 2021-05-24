@@ -94,5 +94,8 @@
     <string name="choose_poly">Choose</string>
     <string name="tell_us_your_complaints_of_disease">Tell us your complaints of disease!</string>
     <string name="btn_make_appointment">Make Appointment</string>
+    <string name="choose_date_and_time">Choose Date and Time</string>
+    <string name="appointment_date">Appointment Date</string>
+    <string name="appointment_time">Appointment Time</string>
 
 </resources>
