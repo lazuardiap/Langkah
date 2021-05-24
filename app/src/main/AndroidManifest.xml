@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Langkah">
-        <activity android:name=".ui.room.RoomDetailActivity"></activity>
+        <activity android:name=".ui.appointment.AppointmentActivity"></activity>
+        <activity android:name=".ui.room.RoomDetailActivity" />
         <activity android:name=".ui.polyclinics.PolyclinicDetailsActivity" />
         <activity android:name=".ui.doctors.DoctorDetailsActivity" />
         <activity android:name=".ui.hospital.HospitalDetailActivity" />
