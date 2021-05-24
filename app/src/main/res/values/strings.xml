@@ -86,5 +86,13 @@
     <string name="services">Services</string>
     <string name="pre_inspection">Pre-Inspection</string>
     <string name="sample_price">Rp 1000,00</string>
+    <string name="birthdate">Confirm Birthdate</string>
+    <string name="your_birthdate">Your Birthdate</string>
+    <string name="make_appointment">Make Appointment</string>
+    <string name="appointment_page_desc">Make an Appointment at the nearest hospital</string>
+    <string name="choose_polyclinc_text">Choose Polyclinic</string>
+    <string name="choose_poly">Choose</string>
+    <string name="tell_us_your_complaints_of_disease">Tell us your complaints of disease!</string>
+    <string name="btn_make_appointment">Make Appointment</string>
 
 </resources>
