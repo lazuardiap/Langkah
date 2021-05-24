@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.newshelter.langkah.R
 import com.newshelter.langkah.databinding.FragmentQueueBinding
 import com.newshelter.langkah.ui.doctors.FullDoctorFragment
@@ -48,12 +49,16 @@ class QueueFragment : Fragment() {
                         polyIdList.add(poly.polyId)
                     }
 
-                    queuePolyAdapter.setPolyId(polyIdList)
+                    queuePolyAdapter.setPolyId(polyIdList, context)
                 }
             }
         }
 
         with(binding){
+
+            Glide.with(requireActivity())
+                    .load(R.drawable.booking)
+                    .into(queueImg)
 
             with(rvPoly){
                 layoutManager = LinearLayoutManager(context)
