@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayoutMediator
 import com.newshelter.langkah.R
 import com.newshelter.langkah.databinding.FragmentHospitalDetailBinding
+import com.newshelter.langkah.ui.appointment.AppointmentActivity
 import com.newshelter.langkah.ui.doctors.SmallDoctorsFragment
 import com.newshelter.langkah.ui.polyclinics.SmallPolyclinicsFragment
 import com.newshelter.langkah.ui.room.RoomsFragment
@@ -95,6 +96,12 @@ class HospitalDetailFragment : Fragment() {
                                 addToBackStack(null)
                                 commit()
                             }
+                        }
+
+                        btnMakeAppointment.setOnClickListener{
+                            val i = Intent(context, AppointmentActivity::class.java)
+                            i.putExtra(AppointmentActivity.EXTRA_HOSPITAL_ID, hospital.hospitalId)
+                            startActivity(i)
                         }
 
                     }
