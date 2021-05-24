@@ -36,9 +36,9 @@ class FragmentLanding : Fragment() {
 
                 signUpButton.setOnClickListener{
                     val mFragmentSignUpWithEmail = FragmentSignUpWithEmail()
-                    val mFragmentManager = fragmentManager
+                    val mFragmentManager = parentFragmentManager
 
-                    mFragmentManager?.beginTransaction()?.apply {
+                    mFragmentManager.beginTransaction().apply {
                         replace(R.id.frame_container, mFragmentSignUpWithEmail, FragmentSignUpWithEmail::class.java.simpleName)
                         addToBackStack(null)
                         commit()
@@ -48,9 +48,9 @@ class FragmentLanding : Fragment() {
 
                 signInText.setOnClickListener {
                     val mFragmentSignIn = LoginFragment()
-                    val mFragmentManager = fragmentManager
+                    val mFragmentManager = parentFragmentManager
 
-                    mFragmentManager?.beginTransaction()?.apply {
+                    mFragmentManager.beginTransaction().apply {
                         replace(R.id.frame_container, mFragmentSignIn, LoginFragment::class.java.simpleName)
                         addToBackStack(null)
                         commit()
