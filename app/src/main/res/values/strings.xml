@@ -97,5 +97,8 @@
     <string name="choose_date_and_time">Choose Date and Time</string>
     <string name="appointment_date">Appointment Date</string>
     <string name="appointment_time">Appointment Time</string>
+    <string name="queue_page_title">Check out the queue!</string>
+    <string name="queue_page_desc">Here is the list of hospital’s queue based on polyclinics!</string>
+    <string name="total_appointment">Total: %d</string>
 
 </resources>
