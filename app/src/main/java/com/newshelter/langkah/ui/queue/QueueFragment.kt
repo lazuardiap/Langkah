@@ -60,6 +60,11 @@ class QueueFragment : Fragment() {
                     .load(R.drawable.booking)
                     .into(queueImg)
 
+            btnBack.setOnClickListener {
+                val mFragmentManager = parentFragmentManager
+                mFragmentManager.popBackStack()
+            }
+
             with(rvPoly){
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
