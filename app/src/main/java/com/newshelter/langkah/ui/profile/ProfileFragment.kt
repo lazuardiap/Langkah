@@ -46,6 +46,15 @@ class ProfileFragment : Fragment() {
 
         bundle.putString(MadeStatusFragment.EXTRA_USER_ID, user.userId)
 
+        val parentFm = parentFragmentManager
+
+//        val mEditProfileFragment = EditProfileFragment()
+//
+//        val editBundle = Bundle()
+//
+//        editBundle.putString(EditProfileFragment.EXTRA_USER_ID, user.userId)
+//        mEditProfileFragment.arguments = editBundle
+
         with(binding){
             tvUserName.text = user.userFullName
             tvUserEmail.text = user.userEmail
@@ -57,6 +66,18 @@ class ProfileFragment : Fragment() {
 
             btnSignOut.setOnClickListener {
                 val i = Intent(context, LandingActivity::class.java)
+                startActivity(i)
+            }
+
+            btnEdit.setOnClickListener {
+                val i = Intent(context, EditProfileActivity::class.java)
+                i.putExtra(EditProfileActivity.EXTRA_USER_ID, user.userId)
+                startActivity(i)
+            }
+
+            btnChangePassword.setOnClickListener {
+                val i = Intent(context, ChangePasswordActivity::class.java)
+                i.putExtra(ChangePasswordActivity.EXTRA_USER_ID, user.userId)
                 startActivity(i)
             }
 
