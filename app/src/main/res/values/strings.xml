@@ -102,5 +102,19 @@
     <string name="total_appointment">Total: %d</string>
     <string name="sample_name">User Name</string>
     <string name="dash">-</string>
+    <string name="sample_email">User Email</string>
+    <string name="sample_phone">User Phone Number</string>
+    <string name="sample_status">Appointment Status</string>
+
+    <string name="no_appointment">No Appointment</string>
+    <string name="appointment_on_process">Appointment on Process</string>
+    <string name="appointment_made">Appointment Made</string>
+    <string name="your_schedule">Your Schedule</string>
+    <string name="make_sure_to_make_an_appointment_first">Make sure to make an appointment first</string>
+    <string name="change_password">Change Password</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="appointment_on_process_text">Please wait, your appointment is on process</string>
+    <string name="with">With</string>
+    <string name="on">On</string>
 
 </resources>
