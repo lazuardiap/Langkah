@@ -111,10 +111,18 @@
     <string name="appointment_made">Appointment Made</string>
     <string name="your_schedule">Your Schedule</string>
     <string name="make_sure_to_make_an_appointment_first">Make sure to make an appointment first</string>
-    <string name="change_password">Change Password</string>
     <string name="sign_out">Sign Out</string>
     <string name="appointment_on_process_text">Please wait, your appointment is on process</string>
     <string name="with">With</string>
     <string name="on">On</string>
+    <string name="edit_page_title">Edit your Profile!</string>
+    <string name="edit_page_description">Try to renew something?</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_your_password">Change Your Password!</string>
+    <string name="change_password_desc">Make sure to remember the new one!</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="re_type_new_password">Re-Type New Password</string>
 
 </resources>
