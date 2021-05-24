@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/cv_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <com.github.florent37.expansionpanel.ExpansionHeader
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:expansion_headerIndicator="@id/headerIndicator"
+            app:expansion_layout="@id/expansionLayout"
+            app:expansion_toggleOnClick="true">
+
+            <!-- HEADER -->
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_polyclinics_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/now_medium"
+                    android:text="@string/polyclinics_name"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_total_queue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/light_grey"
+                    android:fontFamily="@font/now_medium"
+                    android:text="@string/total_appointment"/>
+            </LinearLayout>
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:adjustViewBounds="true"
+                android:id="@+id/headerIndicator"
+                android:layout_gravity="center_vertical|end"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+
+        </com.github.florent37.expansionpanel.ExpansionHeader>
+
+        <com.github.florent37.expansionpanel.ExpansionLayout
+            android:id="@+id/expansionLayout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+
+
+
+        </com.github.florent37.expansionpanel.ExpansionLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -15,6 +15,7 @@ import com.newshelter.langkah.databinding.FragmentHospitalDetailBinding
 import com.newshelter.langkah.ui.appointment.AppointmentActivity
 import com.newshelter.langkah.ui.doctors.SmallDoctorsFragment
 import com.newshelter.langkah.ui.polyclinics.SmallPolyclinicsFragment
+import com.newshelter.langkah.ui.queue.QueueFragment
 import com.newshelter.langkah.ui.room.RoomsFragment
 import com.newshelter.langkah.ui.sectionpager.DetailSectionPagerAdapter
 import com.newshelter.langkah.utils.DataDummy
@@ -102,6 +103,24 @@ class HospitalDetailFragment : Fragment() {
                             val i = Intent(context, AppointmentActivity::class.java)
                             i.putExtra(AppointmentActivity.EXTRA_HOSPITAL_ID, hospital.hospitalId)
                             startActivity(i)
+                        }
+
+                        btnSeeQueue.setOnClickListener {
+                            val fm = parentFragmentManager
+
+                            val mQueueFragment = QueueFragment()
+
+                            val bundle = Bundle()
+
+                            bundle.putString(QueueFragment.EXTRA_HOSPITAL_ID, hospital.hospitalId)
+
+                            mQueueFragment.arguments = bundle
+
+                            fm.beginTransaction().apply {
+                                replace(R.id.frame_container, mQueueFragment, QueueFragment::class.java.simpleName)
+                                addToBackStack(null)
+                                commit()
+                            }
                         }
 
                     }
