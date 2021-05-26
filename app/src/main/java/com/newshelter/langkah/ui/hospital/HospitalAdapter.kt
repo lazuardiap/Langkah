@@ -9,15 +9,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.newshelter.langkah.LandingActivity
 import com.newshelter.langkah.data.HosptalEntity
 import com.newshelter.langkah.databinding.ItemsHospitalBinding
+import com.newshelter.langkah.ui.home.modelhome.Photo
+import com.newshelter.langkah.ui.home.modelhome.Result
 
 class HospitalAdapter :  RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder>(){
 
-    private val listHospital = ArrayList<HosptalEntity>()
+    private val listHospital = ArrayList<Result>()
     private val limit = 3
 
 
 
-    fun setHospital(hospital: List<HosptalEntity>?){
+    fun setHospital(hospital: List<Result>?){
         if (hospital == null) return
         this.listHospital.clear()
         this.listHospital.addAll(hospital)
@@ -30,8 +32,9 @@ class HospitalAdapter :  RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder
 
     override fun onBindViewHolder(holder: HospitalViewHolder, position: Int) {
         val hospital = listHospital[position]
+        val photo = hospital.photos[position]
 
-        holder.bind(hospital)
+        holder.bind(hospital,photo)
     }
 
     override fun getItemCount(): Int {
@@ -44,16 +47,20 @@ class HospitalAdapter :  RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder
 
     class HospitalViewHolder(private val binding: ItemsHospitalBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(hospital: HosptalEntity){
+        fun bind(hospital: Result,photo: Photo){
             with(binding){
-                tvItemName.text = hospital.hospitalName
-                tvItemAddress.text = hospital.address
+                tvItemName.text = hospital.name
+                tvItemAddress.text = hospital.vicinity
+
+                val getPhoto = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&maxheight=100&photoreference=${photo.photo_reference}&key=AIzaSyDLXDQiumBLhSh0OB5D7biGcQL7PbhSY-w"
+
 
                 itemView.setOnClickListener {
                     val i = Intent(itemView.context, HospitalDetailActivity::class.java)
-                    i.putExtra(HospitalDetailActivity.EXTRA_ID, hospital.hospitalId)
+                    i.putExtra(HospitalDetailActivity.EXTRA_ID, hospital.place_id)
                     itemView.context.startActivity(i)
                 }
+
             }
         }
     }
