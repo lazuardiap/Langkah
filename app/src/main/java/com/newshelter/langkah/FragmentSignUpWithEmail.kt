@@ -35,8 +35,6 @@ class FragmentSignUpWithEmail : Fragment() {
             auth = FirebaseAuth.getInstance()
             with(binding){
 
-
-
                 btnClose.setOnClickListener{
                     val mFragmentManager = parentFragmentManager
                     mFragmentManager.popBackStack()

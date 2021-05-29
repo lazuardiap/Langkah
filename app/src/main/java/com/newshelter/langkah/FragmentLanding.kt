@@ -90,11 +90,15 @@ class FragmentLanding : Fragment() {
                     val googleIntent = googleSignInClient.signInIntent
                     startActivityForResult(googleIntent, RC_SIGN_IN)
 
-                    val mFragmentSignUpWithEmail = FragmentSignUpWithEmail()
+                    val mStep2Fragment = Step2Fragment()
                     val mFragmentManager = parentFragmentManager
 
                     mFragmentManager.beginTransaction().apply {
-                        replace(R.id.frame_container, mFragmentSignUpWithEmail, FragmentSignUpWithEmail::class.java.simpleName)
+                        replace(
+                            R.id.frame_container,
+                            mStep2Fragment,
+                            Step2Fragment::class.java.simpleName
+                        )
                         addToBackStack(null)
                         commit()
                     }

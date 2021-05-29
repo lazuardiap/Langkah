@@ -7,16 +7,18 @@ import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
+import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.*
+import com.google.firebase.auth.FirebaseAuth
 import com.newshelter.langkah.databinding.FragmentHomeBinding
 import com.newshelter.langkah.ui.hospital.HospitalAdapter
 import com.newshelter.langkah.utils.DataDummy
@@ -25,12 +27,14 @@ import java.util.*
 
 class HomeFragment : Fragment() {
 
-
+    private lateinit var auth: FirebaseAuth
+    private lateinit var homeViewModel: HomeViewModel
     private lateinit var binding : FragmentHomeBinding
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var locationRequest: LocationRequest
+    private var hospitalAdapter = HospitalAdapter()
     companion object{
-       private const val PERMISSION_ID = 1010
+       const val PERMISSION_ID = 1010
     }
 
     override fun onCreateView(
@@ -39,7 +43,8 @@ class HomeFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater)
-
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        auth = FirebaseAuth.getInstance()
         return binding.root
     }
 
@@ -49,17 +54,27 @@ class HomeFragment : Fragment() {
 
         if (activity != null) {
 
-            val hospitals = DataDummy.generateDummyHospital()
+            binding.helloText.text = "hello, ${auth.currentUser?.displayName}"
 
-            val hospitalAdapter = HospitalAdapter()
 
-            hospitalAdapter.setHospital(hospitals)
+           // val hospitals = DataDummy.generateDummyHospital()
 
+           // val hospitalAdapter = HospitalAdapter()
+
+            //hospitalAdapter.setHospital(hospitals)
+            requestPermission()
+            getLastLocation()
             with(binding.rvHospital) {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
                 adapter = hospitalAdapter
             }
+
+           // with(binding.rvHospital) {
+           //     layoutManager = LinearLayoutManager(context)
+           //     setHasFixedSize(true)
+          //      adapter = hospitalAdapter
+         //  }
             binding.btnRefresh.setOnClickListener {
                 requestPermission()
                 getLastLocation()
@@ -129,6 +144,26 @@ class HomeFragment : Fragment() {
         locationRequest.numUpdates = 1
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         checkPermission()
+        fusedLocationProviderClient.requestLocationUpdates(
+            locationRequest,locationCallback, Looper.myLooper()!!
+        )
+    }
+
+
+    private val locationCallback = object : LocationCallback(){
+        override fun onLocationResult(locationResult: LocationResult) {
+            val lastLocation: Location = locationResult.lastLocation
+            Log.d("Debug:","your last last location: "+ lastLocation.longitude.toString())
+            val latLong = "${lastLocation.latitude},${lastLocation.longitude}"
+            homeViewModel.getListMaps(requireContext(),latLong)
+            homeViewModel.getHospital().observe(viewLifecycleOwner,{healthy ->
+                if(healthy != null){
+                    hospitalAdapter.setHospital(healthy[0].results)
+                    requestPermission()
+                    getLastLocation()
+                }
+            })
+        }
     }
 
 }

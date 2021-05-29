@@ -6,7 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.view.menu.MenuView
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.newshelter.langkah.LandingActivity
 import com.newshelter.langkah.R
 import com.newshelter.langkah.databinding.FragmentProfileBinding
@@ -17,12 +21,14 @@ class ProfileFragment : Fragment() {
 
     private lateinit var binding : FragmentProfileBinding
     private lateinit var viewModel : ProfileViewModel
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
+        auth = FirebaseAuth.getInstance()
         return binding.root
     }
 
@@ -31,6 +37,7 @@ class ProfileFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         val dummyUsers = DataDummy.generateDummyUser()
+        val fireUser = auth.currentUser
 
         val user = dummyUsers[2]
 
@@ -55,14 +62,28 @@ class ProfileFragment : Fragment() {
 //        editBundle.putString(EditProfileFragment.EXTRA_USER_ID, user.userId)
 //        mEditProfileFragment.arguments = editBundle
 
-        with(binding){
-            tvUserName.text = user.userFullName
-            tvUserEmail.text = user.userEmail
-            tvUserPhone.text = user.phoneNumber
+               with(binding){
+// ard            tvUserName.text = user.userFullName
+ //ard           tvUserEmail.text = user.userEmail
+    //ard        tvUserPhone.text = user.phoneNumber
 
 //            Status = 3 = Belum Buat Janji
 //            Status = 2 = Janji lagi di proses sama admin
 //            Status = 1 = Janji dibuat
+                 
+                 // Bagian atas punya ardi
+
+
+                   tvUserName.text = fireUser?.displayName
+                   tvUserEmail.text = fireUser?.email
+                   tvUserPhone.text = fireUser?.phoneNumber
+
+
+                   Glide.with(this@ProfileFragment)
+                       .load(fireUser?.photoUrl)
+                       .apply(RequestOptions.placeholderOf(R.drawable.blue_account_circle_24)
+                           .error(R.drawable.empty))
+                       .into(accountCircle)
 
             btnSignOut.setOnClickListener {
                 val i = Intent(context, LandingActivity::class.java)
