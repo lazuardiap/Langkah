@@ -70,6 +70,9 @@ class ProfileFragment : Fragment() {
 //            Status = 3 = Belum Buat Janji
 //            Status = 2 = Janji lagi di proses sama admin
 //            Status = 1 = Janji dibuat
+                 
+                 // Bagian atas punya ardi
+
 
                    tvUserName.text = fireUser?.displayName
                    tvUserEmail.text = fireUser?.email
