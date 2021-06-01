@@ -23,11 +23,14 @@ object DataDummy {
                         "Jl. Pangeran Diponegoro No.71, RW.5, Kenari, Kec. Senen, Kota Jakarta Pusat, \n" +
                                 "Daerah Khusus Ibukota Jakarta 10430",
                         "0821342213213",
+                    """ATtYBwKW89VakCHjBWy_7TxXvG1HhC57iQ9RiZMD_K_apj6z0iLQ2Q_rVoFYr8Jz9xZy5RZH3WO8KKQffIXZsHHJk8BU9PCXM83N0tJ-2J6B7-ws_KpqhTDcuC366_7ZUoMPjFTTkeIgBDNXhTTr3llHCM5VJKEEaycdrQYFUKRxjLiohCci""",
                         arrayListOf("Pelayanan Rawat Jalan", "Pelayanan Rawat Inap", "Pelayanan Gudang", "Rumah Singgah",
                         "Masjid/Mushola", "Tempat Parkir"),
                         polyclinics,
                         doctors,
-                        rooms
+                        rooms,
+                    -6.1971523,
+                    106.8468688
 
                 )
         )
@@ -35,19 +38,21 @@ object DataDummy {
         hospital.add(
                 HosptalEntity(
                         "hos-02",
-                        "Rumah Sakit Abdi Waluyo Jkt",
-                        "RSCM atau Rumah Sakit Pusat Nasional Umum  Dr. Cipto Mangunkusumo adalah \n" +
-                                "rumah sakit umum milik pemerintah dengan pelayanan terlengkap di Indonesia. \n" +
-                                "Status tersebut diberikan melalui SK Menkes no YM.01.10/III/2212/2009.",
-                        "Jl. HOS. Cokroaminoto No.31-33, RT.1/RW.3, \n" +
-                                "Gondangdia, Kec. Menteng, Kota Jakarta Pusat, \n" +
-                                "Daerah Khusus Ibukota Jakarta 10350",
-                        "0821342213213",
+                        "Rumah Sakit Cipto Mangunkusumo Kencana",
+                        "Rumah sakit Cipto Mangunkusumo Kencana merupakan \n" +
+                                "rumah sakit di bawah Kementerian Kesehatan RI yang Menawarkan konsep pelayanan kesehatan.",
+                        "Jl. Pangeran Diponegoro No.71, RW.5, \n" +
+                                "Kenari, Kec. Senen, Kota Jakarta Pusat, \n" +
+                                "Daerah Khusus Ibukota Jakarta 10430",
+                        "(021) 1500135",
+                    "ATtYBwIPJOfbw2wwDLtfJwgdpx9h5PDDtMjO37t3qqgAcmSfcHmTEulyVj0WEuSO5tQ1WO-9uzKOTUjPRLGDsPRBIUd50cEOqPfGAXZgMwEhUURddySsWfOlLSh8BdP57jrRdD0IAQkv5NLeFjDvq_MW2G4hMvbN5nyGTNWRosX_deW0zVjt",
                         arrayListOf("Pelayanan Rawat Jalan", "Pelayanan Rawat Inap", "Pelayanan Gudang", "Rumah Singgah",
-                                "Masjid/Mushola", "Tempat Parkir"),
+                                "Masjid/Mushola", "Tempat Parkir","kantin","fotocopy"),
                         polyclinics,
                         doctors,
-                        rooms
+                        rooms,
+                    -6.1986549,
+                    106.8458209
                 )
         )
 
@@ -62,11 +67,14 @@ object DataDummy {
                                 "Gondangdia, Kec. Menteng, Kota Jakarta Pusat, \n" +
                                 "Daerah Khusus Ibukota Jakarta 10350",
                         "0821342213213",
+                    "ATtYBwKCoezXjUSRqqyG-ByP9I8lf78BMbt5iHtGe9sU_3PWGtIfccQgY3RvONo1cL72myZkteQq95kCpeKfUp99r7vr7ZnmS_xfV9ia5fy5W6Xd0ExvVjbFrMpCvAUR3o10q3BJC5ithd95xqmYIpTHielBo8eA2pOMyBpoeKXYCR1SaWN1",
                         arrayListOf("Pelayanan Rawat Jalan", "Pelayanan Rawat Inap", "Pelayanan Gudang", "Rumah Singgah",
                                 "Masjid/Mushola", "Tempat Parkir"),
                         polyclinics,
                         doctors,
-                        rooms
+                        rooms,
+                    -6.1898346,
+                    106.8292723
                 )
         )
 
@@ -81,11 +89,14 @@ object DataDummy {
                                 "Gondangdia, Kec. Menteng, Kota Jakarta Pusat, \n" +
                                 "Daerah Khusus Ibukota Jakarta 10350",
                         "0821342213213",
+                    "ATtYBwKCoezXjUSRqqyG-ByP9I8lf78BMbt5iHtGe9sU_3PWGtIfccQgY3RvONo1cL72myZkteQq95kCpeKfUp99r7vr7ZnmS_xfV9ia5fy5W6Xd0ExvVjbFrMpCvAUR3o10q3BJC5ithd95xqmYIpTHielBo8eA2pOMyBpoeKXYCR1SaWN1",
                         arrayListOf("Pelayanan Rawat Jalan", "Pelayanan Rawat Inap", "Pelayanan Gudang", "Rumah Singgah",
                                 "Masjid/Mushola", "Tempat Parkir"),
                         polyclinics,
                         doctors,
-                        rooms
+                        rooms,
+                    -6.1898346,
+                    106.8292723
                 )
         )
 
