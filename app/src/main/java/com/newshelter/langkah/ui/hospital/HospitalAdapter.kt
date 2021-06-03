@@ -1,25 +1,23 @@
 package com.newshelter.langkah.ui.hospital
 
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
-import com.newshelter.langkah.LandingActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.newshelter.langkah.BuildConfig
 import com.newshelter.langkah.data.HosptalEntity
 import com.newshelter.langkah.databinding.ItemsHospitalBinding
-import com.newshelter.langkah.ui.home.modelhome.Photo
-import com.newshelter.langkah.ui.home.modelhome.Result
 
 class HospitalAdapter :  RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder>(){
 
-    private val listHospital = ArrayList<Result>()
+    private val listHospital = ArrayList<HosptalEntity>()
     private val limit = 3
 
 
 
-    fun setHospital(hospital: List<Result>?){
+    fun setHospital(hospital: List<HosptalEntity>){
         if (hospital == null) return
         this.listHospital.clear()
         this.listHospital.addAll(hospital)
@@ -32,9 +30,7 @@ class HospitalAdapter :  RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder
 
     override fun onBindViewHolder(holder: HospitalViewHolder, position: Int) {
         val hospital = listHospital[position]
-        val photo = hospital.photos[position]
-
-        holder.bind(hospital,photo)
+        holder.bind(hospital)
     }
 
     override fun getItemCount(): Int {
@@ -45,24 +41,29 @@ class HospitalAdapter :  RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder
         }
     }
 
-    class HospitalViewHolder(private val binding: ItemsHospitalBinding) : RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(hospital: Result,photo: Photo){
-            with(binding){
-                tvItemName.text = hospital.name
-                tvItemAddress.text = hospital.vicinity
-
-                val getPhoto = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&maxheight=100&photoreference=${photo.photo_reference}&key=AIzaSyDLXDQiumBLhSh0OB5D7biGcQL7PbhSY-w"
+    inner class HospitalViewHolder(private val binding: ItemsHospitalBinding) : RecyclerView.ViewHolder(binding.root) {
 
 
-                itemView.setOnClickListener {
-                    val i = Intent(itemView.context, HospitalDetailActivity::class.java)
-                    i.putExtra(HospitalDetailActivity.EXTRA_ID, hospital.place_id)
-                    itemView.context.startActivity(i)
+        fun bind(hospital: HosptalEntity) {
+            with(binding) {
+                tvItemName.text = hospital.hospitalName
+                tvItemAddress.text = hospital.address
+                val imageUrl ="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${hospital.photo}&key=${BuildConfig.KEY}"
+
+                with(binding){
+                    Glide.with(itemView.context)
+                        .load(imageUrl)
+                        .apply(RequestOptions().override(100,100))
+                        .into(imgPoster)
+
+                    itemView.setOnClickListener {
+                        val i = Intent(itemView.context, HospitalDetailActivity::class.java)
+                        i.putExtra(HospitalDetailActivity.EXTRA_ID, hospital.hospitalId)
+                        itemView.context.startActivity(i)
+                    }
+
                 }
-
             }
         }
     }
-
 }

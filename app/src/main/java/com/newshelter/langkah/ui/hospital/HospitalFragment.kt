@@ -51,10 +51,9 @@ class HospitalFragment : Fragment() {
                     
                 }
             }
-
-
         }
     }
-
-
+    private fun getSearchHospital(){
+        binding.searchBar
+    }
 }
