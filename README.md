@@ -4,7 +4,7 @@ This is a product that produce during 2021 bangkit capstone project. Langkah its
 
 Then the last feature is to make an appointment with nearby hospital based on complaints that you gave to us. Langkah use Machine Learning with data structure to detect any disease based on answered yes/no question provided in the product. Right after patients answer the questions, Langkah will give the best polyclinics recomendation based on your disease.
 
-# How to replcate
+# How to replicate
 
 The steps may changes from time to time android studio or kotlin are updated. 
 
