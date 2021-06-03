@@ -299,7 +299,8 @@ object DataDummy {
                 "082187645379",
                 "Perumahan Resinda Blok blabla, Karawang, Indonesia",
             "",
-                "3"
+                "3",
+                ""
             )
         )
 
@@ -312,7 +313,8 @@ object DataDummy {
                 "082187645379",
                 "Perumahan Resinda Blok blabla, Karawang, Indonesia",
                 "",
-                "2"
+                "2",
+                ""
             )
         )
 
@@ -322,10 +324,11 @@ object DataDummy {
                 "xaviertone@example.com",
                 "Xavier Tone",
                 "12345",
-                "082187645379",
-                "Perumahan Resinda Blok blabla, Karawang, Indonesia",
                 "",
-                "1"
+                "",
+                "",
+                "1",
+                "1999-08-01"
             )
         )
 

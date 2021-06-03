@@ -158,6 +158,38 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/birthdate_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/now_medium"
+            android:text="@string/birthdate"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phone_tf" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_once_date"
+            style="@style/Base.Widget.AppCompat.ImageButton"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_date_range_black"
+            app:layout_constraintTop_toBottomOf="@id/birthdate_text"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_once_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/now_regular"
+            android:layout_marginStart="8dp"
+            android:text="@string/your_birthdate"
+            app:layout_constraintTop_toTopOf="@id/btn_once_date"
+            app:layout_constraintStart_toEndOf="@id/btn_once_date"
+            app:layout_constraintBottom_toBottomOf="@id/btn_once_date"/>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_continue"
             android:layout_width="match_parent"
@@ -170,7 +202,7 @@
             android:textAllCaps="false"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phone_tf"
+            app:layout_constraintTop_toBottomOf="@+id/btn_once_date"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
 
