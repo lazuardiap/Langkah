@@ -68,7 +68,6 @@ class FragmentLanding : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentLandingBinding.inflate(layoutInflater)
-
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()

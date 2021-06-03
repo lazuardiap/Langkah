@@ -36,6 +36,7 @@ android {
     }
     buildFeatures{
         viewBinding true
+        mlModelBinding true
     }
 }
 
@@ -59,9 +60,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
 
     implementation "androidx.viewpager2:viewpager2:1.0.0"
-
     implementation 'com.google.firebase:firebase-auth:21.0.1'
     implementation 'com.github.florent37:expansionpanel:1.2.4'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0-rc2'
 
     //testing
     testImplementation "junit:junit:$junitVersion"

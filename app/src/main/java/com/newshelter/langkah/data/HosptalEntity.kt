@@ -11,6 +11,6 @@ data class HosptalEntity(
     var polyclinics: List<PolyclinicsEntity>,
     var doctors: List<DoctorsEntity>,
     var rooms: List<RoomEntity>,
-    var lat:Double,
-    var long:Double,
+    var latitude:Double,
+    var longitude:Double,
 )

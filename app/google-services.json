@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "472485714145",
+    "project_id": "langkah-e234a",
+    "storage_bucket": "langkah-e234a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472485714145:android:d5a0dbdbe72269fd3dffa0",
+        "android_client_info": {
+          "package_name": "com.newshelter.langkah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "472485714145-ugcjgpospuvsogiae8mjam2tut0e60s9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvU06SZ_Myk2g2nk4IMX9SAaKHJw4D0QE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "472485714145-ugcjgpospuvsogiae8mjam2tut0e60s9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
