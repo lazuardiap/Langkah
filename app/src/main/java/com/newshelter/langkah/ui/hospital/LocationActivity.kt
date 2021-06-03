@@ -52,7 +52,7 @@ class LocationActivity : AppCompatActivity(),OnMapReadyCallback {
         val extras = intent.extras
         for (hospital in hospitalDummy){
             if (hospital.hospitalId == extras?.getString(EXTRA_HOSPITAL_ID)) {
-                val goalLocate = LatLng(hospital.lat,hospital.long)
+                val goalLocate = LatLng(hospital.latitude,hospital.longitude)
 
                 val markerNowLoc = MarkerOptions()
                     .position(nowLocate)
@@ -69,7 +69,7 @@ class LocationActivity : AppCompatActivity(),OnMapReadyCallback {
 
                 viewModel.getDirection(
                     "${nowLocate.latitude},${nowLocate.longitude}",
-                    "${hospital.lat},${hospital.long}"
+                    "${hospital.latitude},${hospital.longitude}"
                     )
 
                 viewModel.getLiveDirection().observe(this,{route ->
