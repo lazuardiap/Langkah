@@ -8,5 +8,6 @@ data class UserEntity(
     var phoneNumber : String,
     var homeAddress : String,
     var userCurrLocation : String,
-    var appointmentStatus: String
+    var appointmentStatus: String,
+    var userBirthdate : String
 )
