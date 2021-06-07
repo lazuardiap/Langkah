@@ -17,7 +17,7 @@ class HospitalAdapter :  RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder
 
 
 
-    fun setHospital(hospital: List<HosptalEntity>){
+    fun setHospital(hospital: List<HosptalEntity>?){
         if (hospital == null) return
         this.listHospital.clear()
         this.listHospital.addAll(hospital)
@@ -34,11 +34,7 @@ class HospitalAdapter :  RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder
     }
 
     override fun getItemCount(): Int {
-        if (listHospital.size > limit){
-            return limit
-        }else{
-            return listHospital.size
-        }
+        return listHospital.size
     }
 
     inner class HospitalViewHolder(private val binding: ItemsHospitalBinding) : RecyclerView.ViewHolder(binding.root) {

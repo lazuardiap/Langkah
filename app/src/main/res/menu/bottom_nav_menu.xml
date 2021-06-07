@@ -4,10 +4,7 @@
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/home"/>
-    <item
-        android:id="@+id/navigation_hospital"
-        android:icon="@drawable/ic_baseline_local_hospital_24"
-        android:title="@string/hospital"/>
+
     <item
         android:id="@+id/navigation_consultation"
         android:icon="@drawable/ic_baseline_question_answer_24"

@@ -1,5 +1,6 @@
 package com.newshelter.langkah
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
@@ -47,8 +48,6 @@ class FragmentSignUpWithEmail : Fragment() {
                     val reTypePass = retypePassTf.editText?.text.toString().trim()
 
 
-                    val mStep2Fragment = Step2Fragment()
-                    val mFragmentManager = parentFragmentManager
 
                     if(fullName.isEmpty()){
                         nameTf.error ="Nama Harus di isi"
@@ -85,11 +84,10 @@ class FragmentSignUpWithEmail : Fragment() {
                     auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener {
                             if(it.isSuccessful){
-                                mFragmentManager.beginTransaction().apply {
-                                    replace(R.id.frame_container, mStep2Fragment, Step2Fragment::class.java.simpleName)
-                                    addToBackStack(null)
-                                    commit()
-                                }
+
+                                //Todo: still don't know if this right
+                                val i = Intent(context, AppActivity::class.java)
+                                startActivity(i)
                             }else{
                                 Toast.makeText(
                                     context,

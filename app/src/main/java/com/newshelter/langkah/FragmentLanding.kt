@@ -89,18 +89,9 @@ class FragmentLanding : Fragment() {
                     val googleIntent = googleSignInClient.signInIntent
                     startActivityForResult(googleIntent, RC_SIGN_IN)
 
-                    val mStep2Fragment = Step2Fragment()
-                    val mFragmentManager = parentFragmentManager
-
-                    mFragmentManager.beginTransaction().apply {
-                        replace(
-                            R.id.frame_container,
-                            mStep2Fragment,
-                            Step2Fragment::class.java.simpleName
-                        )
-                        addToBackStack(null)
-                        commit()
-                    }
+                    //Todo: only intent, doesn't connect to auth
+                    val i = Intent(context, AppActivity::class.java)
+                    startActivity(i)
 
                 }
                 Glide.with(requireActivity())
@@ -131,11 +122,14 @@ class FragmentLanding : Fragment() {
         }
     }
 
+
+    //ToDo: Remove the comment to activate auth
+
     override fun onStart() {
         super.onStart()
-        if (auth.currentUser != null) {
-            val i = Intent(context, AppActivity::class.java)
-            startActivity(i)
-        }
+//        if (auth.currentUser != null) {
+//            val i = Intent(context, AppActivity::class.java)
+//            startActivity(i)
+//        }
     }
 }
