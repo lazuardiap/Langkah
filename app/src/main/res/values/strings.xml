@@ -166,5 +166,21 @@
     <string name="varicose_vens">Varicose veins</string>
     <string name="hepatitis_A">hepatitis A</string>
     <string name="error">ERROR</string>
+    <string name="consultation_fragment_title">Ready to answer a few questions?</string>
+    <string name="consultation_fragment_desc">With Langkah, you can consult your complaints and make an appointment for it through recomendation.</string>
+    <string name="btn_get_started">Get Started</string>
+    <string name="sample_question">Sample Question</string>
+    <string name="tv_true">True</string>
+    <string name="tv_false">False</string>
+    <string name="submit">Submit</string>
+    <string name="submit_the_complaints">Submit the complaints?</string>
 
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="consultation_result_title">Here is the result:</string>
+    <string name="sample_symptom">Sample Symptom</string>
+    <string name="appointment_message">There is a hospital nearby that can help with your disease. Make an appointment right now!</string>
+    <string name="poliklinik">poliklinik</string>
+    <string name="skip_appointment">Skip Appointment</string>
 </resources>

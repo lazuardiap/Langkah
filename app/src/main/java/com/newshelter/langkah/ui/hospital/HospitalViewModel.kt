@@ -44,7 +44,7 @@ class HospitalViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<RouteResponses>, t: Throwable) {
-                TODO("Not yet implemented")
+
             }
 
         })

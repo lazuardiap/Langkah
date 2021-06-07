@@ -1,23 +1,37 @@
 package com.newshelter.langkah.ui.consultation
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import com.newshelter.langkah.R
 import com.newshelter.langkah.databinding.FragmentConsultationBinding
 import com.newshelter.langkah.ml.DiseasePredictModel
+import kotlinx.android.synthetic.main.fragment_consultation.*
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.nio.ByteBuffer
 
 
-class ConsultationFragment : Fragment() {
+class ConsultationFragment : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentConsultationBinding
     private lateinit var viewModel: ConsultationViewModel
+    private var mCurrentPosition: Int = 0
+    private var mQuestionList : List<String>? = null
+
+    private val byteBuffer : ByteBuffer = ByteBuffer.allocateDirect(4*132)
+
+    private lateinit var textQuestion : String
+
+    private lateinit var textProgress : String
+
+    private lateinit var symptomResult : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,262 +46,126 @@ class ConsultationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         if (activity != null) {
             viewModel = ConsultationViewModel()
-            mlMdel()
-            viewModel.text.observe(viewLifecycleOwner, {
-                //  binding.textDashboard.text = it
+
+            mQuestionList = viewModel.getQuestions()
+
+            setQuestion()
+
+            btn_true.setOnClickListener(this)
+            btn_false.setOnClickListener(this)
+            btn_close.setOnClickListener(this)
+        }
+    }
+
+    private fun setQuestion(){
 
 
+        binding.progressBar.progress = mCurrentPosition
 
+        textProgress = mCurrentPosition.toString() + "/" + progressBar.max
 
+        binding.tvProgress.text = textProgress
 
+        textQuestion = "Apakah anda merasa " +mQuestionList!![mCurrentPosition]+ " ?"
 
+        binding.tvQuestion.text = textQuestion
+        mCurrentPosition++
+    }
 
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.btn_true ->{
+                Log.d("Success", mCurrentPosition.toString())
 
+                val fm = parentFragmentManager
+                val mSubmitFragment = SubmitFragment()
+                val mBundle = Bundle()
 
-                //       val data = intArrayOf(
-                ///           1,1,1,1,1,1,1
-                //         )
-                //         val byteBuffer = ByteBuffer.allocate(132)
+                if (mCurrentPosition <= mQuestionList!!.size){
 
+                    byteBuffer.putFloat(1f)
 
-                //       val intBuffer: IntBuffer = byteBuffer.asIntBuffer()
-                //       intBuffer.put(data)
-                //           .asReadOnlyBuffer()
+                    when{
+                        mCurrentPosition < mQuestionList!!.size -> {
+                            setQuestion()
+                        }
 
-                //       val array = byteBuffer.array()
-                //   for (i in array.indices) {
-                //     Log.d(context.toString(),i.toString() + ": " + array[i])
-                //    }
-                //   Log.d(context.toString(), array[1].toString() + array.toString()+ array.size.toString())
-                //          val asd =
-                //               ByteBuffer.wrap(array)
+                        else ->{
+                            mCurrentPosition = mQuestionList!!.size - 1
+                            Toast.makeText(requireContext(), "You have succesfuly finished the questionaire", Toast.LENGTH_SHORT).show()
 
-                //        Log.d(context.toString(), asd.char.toString() + asd.toString())
+                            symptomResult = mlModel(byteBuffer)
 
+                            mBundle.putString(SubmitFragment.EXTRA_SYMPTOM, symptomResult)
 
-                //      val model = DiseasePredictModel.newInstance(requireContext())
+                            mSubmitFragment.arguments = mBundle
 
-// Creates inputs for reference.
-
-                //         val input = TensorBuffer.createFixedSize(intArrayOf(1, 1, 132),DataType.FLOAT32)
-                //            val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 1, 132), DataType.FLOAT32)
-                //          inputFeature0.loadBuffer(asd, intArrayOf(1,1,132))
-//
-// Runs model inference and gets result.
-
-                //     val outputs = model.process(inputFeature0)
-                //      val outputFeature0 = outputs.outputFeature0AsTensorBuffer
-
-                //      Log.d(context.toString(),outputFeature0.toString())
-                //      binding.textDashboard.text = outputFeature0.toString()
-                //      model.close()
-
-
-                //         val ints = intArrayOf(1,1,1)
-//                val bytes = ints.foldIndexed(ByteArray(ints.size)) { i, a, v ->
-                //            a.apply {
-                //                set(i, v.toByte())
-                //             }
-                //          }
-/*
-                var i = 0
-
-                val array:ByteArray = byteArrayOf(1,1)
-                while (i<132){
-                    val asd = ints.foldIndexed(ByteArray(ints.size)){index,acc,value ->
-                        acc.apply {
-                            set(1, 1.toByte())
+                            fm.beginTransaction()
+                                .replace(R.id.frame_container, mSubmitFragment, SubmitFragment::class.java.simpleName)
+                                .commit()
                         }
                     }
-                    val ade = 1
-                    Log.d(context.toString(),asd[ade].toString())
-                    array.plus(asd)
-                    Log.d(context.toString(),array.size.toString())
-                    Log.d(context.toString(),array.toString())
-                    i++
-                    Log.d(context.toString(),array.toString())
-                    binding.textDashboard.text = array.toString()
-                    Log.d(context.toString(),array.size.toString())
+                }
+            }
+
+            R.id.btn_false->{
+
+                byteBuffer.putFloat(0f)
+
+                val fm = parentFragmentManager
+                val mSubmitFragment = SubmitFragment()
+                val mBundle = Bundle()
+                
+                Log.d("Success", mCurrentPosition.toString())
+                when{
+                    mCurrentPosition < mQuestionList!!.size -> {
+                        setQuestion()
+                    }
+
+                    else ->{
+                        mCurrentPosition = mQuestionList!!.size - 1
+                        Toast.makeText(requireContext(), "You have succesfuly finished the questionaire", Toast.LENGTH_SHORT).show()
+
+                        symptomResult = mlModel(byteBuffer)
+
+                        mBundle.putString(SubmitFragment.EXTRA_SYMPTOM, symptomResult)
+
+                        mSubmitFragment.arguments = mBundle
+
+                        fm.beginTransaction()
+                            .replace(R.id.frame_container, mSubmitFragment, SubmitFragment::class.java.simpleName)
+                            .commit()
+                    }
+                }
+            }
+
+            R.id.btn_close->{
+                val builder = AlertDialog.Builder(context)
+                builder.setTitle("Cancel Consultation")
+                builder.setMessage("Are you sure you want to cancel your consultation process?")
+
+                builder.setPositiveButton(R.string.yes) { dialog, which ->
+                    activity?.finish()
+                    Toast.makeText(context, "Your consultation is cancelled", Toast.LENGTH_SHORT).show()
                 }
 
-             //   val asd = ints.foldIndexed(ByteArray(ints.size)){index,acc,value ->
-            //        acc.apply {
-           //             set(1, 1.toByte())
-           //         }
-          //      }
-          //      Log.d(context.toString(),asd[0].toString())
-         //       Log.d(context.toString(),asd[1].toString())
-         //       Log.d(context.toString(),asd[2].toString())
+                builder.setNegativeButton(R.string.no) { dialog, which ->
+                    Toast.makeText(context, "Resuming your consultation", Toast.LENGTH_SHORT).show()
+                }
+                builder.show()
 
-       //         val byteBuffer = ByteBuffer.wrap(bytes)
-
-         //       val model = DiseasePredictModel.newInstance(requireContext())
-
-// Creates inputs for reference.
-         //       val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 1, 132), DataType.FLOAT32)
-//                inputFeature0.loadBuffer(byteBuffer)
-
-// Runs model inference and gets result.
-           //     val outputs = model.process(inputFeature0)
-             //   val outputFeature0 = outputs.outputFeature0AsTensorBuffer
-
-
-             //   binding.textDashboard.text = bytes.toString()
-// Releases model resources if no longer used.
-     //           model.close()
-
-
-
- */
-
-            })
+            }
         }
     }
 
 
-    private fun mlMdel() {
-
-        val byteBuffer : ByteBuffer = ByteBuffer.allocateDirect(4*132)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(1f)
-        byteBuffer.putFloat(0f)
-        byteBuffer.putFloat(0f)
+    private fun mlModel(byteBuffer: ByteBuffer) : String{
 
 
-
-
-
-
+        lateinit var symptoms : String
 
 
 
@@ -312,131 +190,131 @@ class ConsultationFragment : Fragment() {
         when(maxIndex){
 
             0-> {
-                binding.textDashboard.text = getString(R.string.vertigo)
+                symptoms = getString(R.string.vertigo)
             }
             1-> {
-                binding.textDashboard.text = getString(R.string.aids)
+                symptoms = getString(R.string.aids)
             }
             2-> {
-                binding.textDashboard.text = getString(R.string.acne)
+                symptoms = getString(R.string.acne)
             }
             3-> {
-                binding.textDashboard.text = getString(R.string.alcohepa)
+                symptoms = getString(R.string.alcohepa)
             }
             4-> {
-                binding.textDashboard.text = getString(R.string.allergy)
+                symptoms = getString(R.string.allergy)
             }
             5-> {
 
-                binding.textDashboard.text = getString(R.string.arthritis)
+                symptoms = getString(R.string.arthritis)
             }
             6-> {
-                binding.textDashboard.text = getString(R.string.bronc_asthma)
+                symptoms = getString(R.string.bronc_asthma)
             }
             7-> {
-                binding.textDashboard.text = getString(R.string.Cervical_Spondylosis)
+                symptoms = getString(R.string.Cervical_Spondylosis)
             }
             8-> {
-                binding.textDashboard.text = getString(R.string.Chicken_P)
+                symptoms = getString(R.string.Chicken_P)
             }
             9-> {
-                binding.textDashboard.text = getString(R.string.Chronic_Choles)
+                symptoms = getString(R.string.Chronic_Choles)
             }
             10-> {
-                binding.textDashboard.text = getString(R.string.common_cold)
+                symptoms = getString(R.string.common_cold)
             }
             11-> {
-                binding.textDashboard.text = getString(R.string.dengue)
+                symptoms = getString(R.string.dengue)
             }
             12-> {
-                binding.textDashboard.text = getString(R.string.diabet)
+                symptoms = getString(R.string.diabet)
             }
             13-> {
-                binding.textDashboard.text = getString(R.string.piles)
+                symptoms = getString(R.string.piles)
             }
             14-> {
-                binding.textDashboard.text = getString(R.string.drug_react)
+                symptoms = getString(R.string.drug_react)
             }
             15-> {
-                binding.textDashboard.text = getString(R.string.fungal_infect)
+                symptoms = getString(R.string.fungal_infect)
             }
             16-> {
-                binding.textDashboard.text = getString(R.string.gerd)
+                symptoms = getString(R.string.gerd)
             }
             17-> {
-                binding.textDashboard.text = getString(R.string.gastroenter)
+                symptoms = getString(R.string.gastroenter)
             }
             18-> {
-                binding.textDashboard.text = getString(R.string.heart_attak)
+                symptoms = getString(R.string.heart_attak)
             }
             19-> {
-                binding.textDashboard.text = getString(R.string.hepatitis_B)
+                symptoms = getString(R.string.hepatitis_B)
             }
             20-> {
-                binding.textDashboard.text = getString(R.string.Hepatitis_C)
+                symptoms = getString(R.string.Hepatitis_C)
             }
             21-> {
-                binding.textDashboard.text = getString(R.string.Hepatitis_D)
+                symptoms = getString(R.string.Hepatitis_D)
             }
             22-> {
-                binding.textDashboard.text = getString(R.string.Hepatitis_E)
+                symptoms = getString(R.string.Hepatitis_E)
             }
             23-> {
-                binding.textDashboard.text = getString(R.string.Hpertensi)
+                symptoms = getString(R.string.Hpertensi)
             }
             24-> {
-                binding.textDashboard.text = getString(R.string.Hperthroid)
+                symptoms = getString(R.string.Hperthroid)
             }
             25-> {
-                binding.textDashboard.text = getString(R.string.Hypogy)
+                symptoms = getString(R.string.Hypogy)
             }
             26-> {
-                binding.textDashboard.text = getString(R.string.hypothiroid)
+                symptoms = getString(R.string.hypothiroid)
             }
             27-> {
-                binding.textDashboard.text = getString(R.string.impetigo)
+                symptoms = getString(R.string.impetigo)
             }
             28-> {
-                binding.textDashboard.text = getString(R.string.jaundice)
+                symptoms = getString(R.string.jaundice)
             }
             29-> {
-                binding.textDashboard.text = getString(R.string.malaria)
+                symptoms = getString(R.string.malaria)
             }
             30-> {
-                binding.textDashboard.text = getString(R.string.migraine)
+                symptoms = getString(R.string.migraine)
             }
             31-> {
-                binding.textDashboard.text = getString(R.string.osteorarthirs)
+                symptoms = getString(R.string.osteorarthirs)
             }
             32-> {
-                binding.textDashboard.text = getString(R.string.paralysis)
+                symptoms = getString(R.string.paralysis)
             }
             33-> {
-                binding.textDashboard.text = getString(R.string.peptic_ulcer)
+                symptoms = getString(R.string.peptic_ulcer)
             }
             34-> {
-                binding.textDashboard.text = getString(R.string.pneumonia)
+                symptoms = getString(R.string.pneumonia)
             }
             35-> {
-                binding.textDashboard.text = getString(R.string.psoriasis)
+                symptoms = getString(R.string.psoriasis)
             }
             36-> {
-                binding.textDashboard.text = getString(R.string.tbc)
+                symptoms = getString(R.string.tbc)
             }
             37-> {
-                binding.textDashboard.text = getString(R.string.typhoid)
+                symptoms = getString(R.string.typhoid)
             }
             38-> {
-                binding.textDashboard.text = getString(R.string.urinary_tract)
+                symptoms = getString(R.string.urinary_tract)
             }
             39-> {
-                binding.textDashboard.text = getString(R.string.varicose_vens)
+                symptoms = getString(R.string.varicose_vens)
             }
             40-> {
-                binding.textDashboard.text = getString(R.string.hepatitis_A)
+                symptoms = getString(R.string.hepatitis_A)
             }
             else -> {
-                binding.textDashboard.text = getString(R.string.error)
+                symptoms = getString(R.string.error)
             }
         }
 
@@ -450,7 +328,10 @@ class ConsultationFragment : Fragment() {
      //   Log.d(context.toString(),min.toString()+"min")
 // Releases model resources if no longer used.
         model.close()
+        
+        return symptoms
     }
+
 
 
 }

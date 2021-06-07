@@ -29,7 +29,7 @@
             android:fontFamily="@font/now_bold"
             android:textSize="24sp"
             android:textAlignment="center"
-            android:text="@string/sample_question" />
+            android:text="@string/submit_the_complaints" />
 
         <LinearLayout
             android:id="@+id/ll_progress_details"
@@ -48,7 +48,7 @@
                 android:indeterminate="false"
                 android:max="132"
                 android:minHeight="50dp"
-                android:progress="0">
+                android:progress="132">
             </ProgressBar>
 
             <TextView
@@ -59,33 +59,21 @@
                 android:padding="15dp"
                 android:textColorHint="#7A8089"
                 android:textSize="14sp"
-                tools:text="0/132">
+                tools:text="132/132">
             </TextView>
 
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_true"
+            android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/now_bold"
-            android:text="@string/tv_true"
+            android:text="@string/submit"
             android:textAllCaps="false"
             android:layout_marginTop="8dp"
             android:background="@drawable/rounded_button_8" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/now_bold"
-            android:text="@string/tv_false"
-            android:textAllCaps="false"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_button_8"
-            app:backgroundTint="@color/white"
-            android:textColor="@color/blue_main"
-            />
 
     </LinearLayout>
 

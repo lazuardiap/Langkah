@@ -31,7 +31,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:gravity="start"
@@ -42,7 +41,7 @@
             app:layout_constraintStart_toEndOf="@+id/img_poster"
             app:layout_constraintTop_toTopOf="@id/img_poster"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="poliklinik" />
+            android:text="@string/poliklinik" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

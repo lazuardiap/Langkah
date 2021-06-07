@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_consultation"
-        android:name="com.newshelter.langkah.ui.consultation.ConsultationFragment"
+        android:name="com.newshelter.langkah.ui.consultation.ConsultationLandingFragment"
         android:label="@string/consultation"
-        tools:layout="@layout/fragment_consultation" />
+        tools:layout="@layout/fragment_consultation_landing" />
 
     <fragment
         android:id="@+id/navigation_profile"

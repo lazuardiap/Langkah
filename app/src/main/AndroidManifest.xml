@@ -16,10 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Langkah"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".ui.hospital.LocationActivity"></activity>
+        <activity android:name=".ui.consultation.ConsultationResultActivity"/>
+        <activity android:name=".ui.consultation.ConsultationActivity" />
+        <activity android:name=".ui.hospital.LocationActivity" />
         <activity android:name=".ui.profile.ChangePasswordActivity" />
         <activity android:name=".ui.profile.EditProfileActivity" />
-        <activity android:name=".ui.appointment.AppointmentActivity" />
         <activity android:name=".ui.room.RoomDetailActivity" />
         <activity android:name=".ui.polyclinics.PolyclinicDetailsActivity" />
         <activity android:name=".ui.doctors.DoctorDetailsActivity" />
