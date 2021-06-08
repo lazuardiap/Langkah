@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import com.newshelter.langkah.data.UserEntity
 import com.newshelter.langkah.databinding.FragmentSignUpWithEmailBinding
 
 
@@ -17,7 +19,7 @@ class FragmentSignUpWithEmail : Fragment() {
 
     private lateinit var binding : FragmentSignUpWithEmailBinding
     private lateinit var auth: FirebaseAuth
-
+    private lateinit var ref : DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +36,7 @@ class FragmentSignUpWithEmail : Fragment() {
         if (activity != null){
 
             auth = FirebaseAuth.getInstance()
+            ref = FirebaseDatabase.getInstance().getReference("USERS")
             with(binding){
 
                 btnClose.setOnClickListener{
@@ -76,18 +79,28 @@ class FragmentSignUpWithEmail : Fragment() {
                         return@setOnClickListener
                     }
 
+
                     Log.d(fullName,"massage")
                     Log.d(email,"massage")
                     Log.d(password,"massage")
                     Log.d(reTypePass,"massage")
 
+                    ref.addValueEventListener(object : ValueEventListener{
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            TODO("Not yet implemented")
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+                    })
+
                     auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener {
                             if(it.isSuccessful){
-
-                                //Todo: still don't know if this right
                                 val i = Intent(context, AppActivity::class.java)
                                 startActivity(i)
+
                             }else{
                                 Toast.makeText(
                                     context,
@@ -109,6 +122,4 @@ class FragmentSignUpWithEmail : Fragment() {
             }
         }
     }
-
-
 }

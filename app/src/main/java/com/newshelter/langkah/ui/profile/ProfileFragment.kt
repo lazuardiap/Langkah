@@ -10,6 +10,10 @@ import androidx.appcompat.view.menu.MenuView
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.newshelter.langkah.LandingActivity
 import com.newshelter.langkah.R
@@ -22,6 +26,7 @@ class ProfileFragment : Fragment() {
     private lateinit var binding : FragmentProfileBinding
     private lateinit var viewModel : ProfileViewModel
     private lateinit var auth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +40,12 @@ class ProfileFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient= GoogleSignIn.getClient(requireActivity(),gso)
 
         val dummyUsers = DataDummy.generateDummyUser()
         val fireUser = auth.currentUser
@@ -86,6 +97,8 @@ class ProfileFragment : Fragment() {
                        .into(accountCircle)
 
             btnSignOut.setOnClickListener {
+                auth.signOut()
+                googleSignInClient.signOut()
                 val i = Intent(context, LandingActivity::class.java)
                 startActivity(i)
             }

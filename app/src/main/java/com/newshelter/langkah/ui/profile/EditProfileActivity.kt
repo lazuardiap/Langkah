@@ -3,7 +3,6 @@ package com.newshelter.langkah.ui.profile
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.newshelter.langkah.databinding.ActivityEditProfileBinding
-import com.newshelter.langkah.ui.appointment.AppointmentActivity
 import com.newshelter.langkah.utils.DataDummy
 import com.newshelter.langkah.utils.DatePickerFragment
 import java.text.SimpleDateFormat

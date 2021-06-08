@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModel
 import com.newshelter.langkah.R
 import com.newshelter.langkah.databinding.FragmentConsultationBinding
 import com.newshelter.langkah.ml.DiseasePredictModel
+
 import kotlinx.android.synthetic.main.fragment_consultation.*
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
