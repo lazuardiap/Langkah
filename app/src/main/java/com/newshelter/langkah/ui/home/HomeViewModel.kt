@@ -22,11 +22,6 @@ class HomeViewModel:ViewModel() {
     }
 
 
-    fun getDetailMaps(placeId:String,context: Context){
-
-    }
-
-
     fun getListMaps(context: Context)  {
         val array = ArrayList<Result>()
         val retroInstance = RetrofitClient.getRetroInstance().create(ApiRetrofit::class.java)

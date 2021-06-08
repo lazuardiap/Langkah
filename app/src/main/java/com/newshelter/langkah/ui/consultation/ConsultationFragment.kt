@@ -168,23 +168,13 @@ class ConsultationFragment : Fragment(), View.OnClickListener {
 
         lateinit var symptoms : String
 
-
-
         val model = DiseasePredictModel.newInstance(requireContext())
 
-// Creates inputs for reference.
         val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 1, 132), DataType.FLOAT32)
         inputFeature0.loadBuffer(byteBuffer)
 
-
-// Runs model inference and gets result.
         val outputs = model.process(inputFeature0)
         val outputFeature0 = outputs.outputFeature0AsTensorBuffer.floatArray
-
-
-
-
-
 
         val maxIndex = outputFeature0.indices.maxByOrNull { outputFeature0[it] }
 
@@ -329,7 +319,6 @@ class ConsultationFragment : Fragment(), View.OnClickListener {
      //   Log.d(context.toString(),min.toString()+"min")
 // Releases model resources if no longer used.
         model.close()
-        
         return symptoms
     }
 

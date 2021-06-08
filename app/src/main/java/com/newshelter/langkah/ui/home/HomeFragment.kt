@@ -46,18 +46,11 @@ class HomeFragment : Fragment() {
 
             val hospitals = DataDummy.generateDummyHospital()
             val hospitalAdapter = HospitalAdapter()
+            val helloText = "hello, ${auth.currentUser?.displayName}"
 
-            binding.helloText.text = "hello, ${auth.currentUser?.displayName}"
+
+            binding.helloText.text = helloText
             binding.tvCurrentPlace.text = getCityName(-6.194031, 106.832587)
-
-            binding.btnRefresh.setOnClickListener {
-                when (it.callOnClick()){
-                    true -> TODO()
-                    false -> TODO()
-                }
-            }
-
-
 
 
             binding.btnCall.setOnClickListener {
@@ -65,25 +58,6 @@ class HomeFragment : Fragment() {
                 val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", telephone, null))
                 startActivity(intent)
             }
-
-   //         homeViewModel.getListMaps(requireContext())
-     //       homeViewModel.getLiveResult().observe(viewLifecycleOwner,{obsr ->
-         ///       hospitalAdapter.setHospital(obsr)
-
-//                Log.d(context.toString(),obsr[0].toString())
-            //    Log.d(obsr[0].photos[0].photo_reference,"cekk")
-      //          hospitalAdapter.notifyDataSetChanged()
-      //      })
-       //     with(binding.rvHospital){
-
-        //        layoutManager = LinearLayoutManager(context)
-         //       setHasFixedSize(true)
-        //        adapter = hospitalAdapter
-         //   }
-
-
-
-
            hospitalAdapter.setHospital(hospitals)
 
             with(binding.rvHospital) {
@@ -94,7 +68,6 @@ class HomeFragment : Fragment() {
         }
     }
     private fun getCityName(lat: Double, long: Double):String{
-        //-6.194031, 106.832587
         val geoCoder = Geocoder(activity, Locale.getDefault())
         val address = geoCoder.getFromLocation(lat,long,3)
         val cityName = address[0].locality.toString()

@@ -74,11 +74,7 @@ class FragmentLanding : Fragment() {
                 FirebaseApp.initializeApp(requireContext())
 
                 lazySignUp.setOnClickListener {
-
-                    //Todo: only intent, doesn't connect to auth
-
                     signInGoogle()
-
                 }
                 Glide.with(requireActivity())
                     .load(R.drawable.around_location)

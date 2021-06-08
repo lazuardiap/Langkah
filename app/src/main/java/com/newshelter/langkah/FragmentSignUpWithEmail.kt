@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.newshelter.langkah.data.UserEntity
 import com.newshelter.langkah.databinding.FragmentSignUpWithEmailBinding
 
 
@@ -85,15 +84,6 @@ class FragmentSignUpWithEmail : Fragment() {
                     Log.d(password,"massage")
                     Log.d(reTypePass,"massage")
 
-                    ref.addValueEventListener(object : ValueEventListener{
-                        override fun onDataChange(snapshot: DataSnapshot) {
-                            TODO("Not yet implemented")
-                        }
-
-                        override fun onCancelled(error: DatabaseError) {
-                            TODO("Not yet implemented")
-                        }
-                    })
 
                     auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener {
