@@ -4,15 +4,10 @@
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-from tensorflow import feature_column
-from sklearn.model_selection import train_test_split
 
 # Importing the csv file and make it to pandas dataframe
 df_train = pd.read_csv('Training.csv')
 df_test = pd.read_csv('Testing.csv')
-
-# Split df_train into 80% df_train and 20% df_val
-df_train, df_val = train_test_split(df_train, test_size=0.2)
 
 # Grouping by prognosis column in df_train to make a list of prognosis name
 prognosis_grouping = df_train.groupby(df_train['prognosis']).max()
@@ -45,39 +40,19 @@ df_test = df_test.rename(columns={'dischromic _patches':'dischromic_patches',
                                   'spotting_ urination' : 'spotting_urination',
                                   'toxic_look_(typhos)' : 'toxic_look_typhos'}, inplace=False)
 
-# The function for convert the dataframe into dataset
-def df_to_dataset(df, shuffle=True, batch_size=32):
-    df = df.copy()
-    labels = df.pop('prognosis')
-    ds = tf.data.Dataset.from_tensor_slices((dict(df), labels))
-    if shuffle:
-        ds = ds.shuffle(buffer_size=len(df))
-    ds = ds.batch(batch_size)
-    return ds
+#Split columns and label to x and y
+column_list = list(df_train.columns)
+x_train = df_train.drop(columns=['prognosis'])
+y_train = df_train.drop(columns=column_list[:-1])
 
-# Convert the dataframe into dataset
-batch_size = 50
-ds_train = df_to_dataset(df_train, batch_size=batch_size)
-ds_val = df_to_dataset(df_val, shuffle=False, batch_size=batch_size)
-ds_test = df_to_dataset(df_test, shuffle=False, batch_size=batch_size)
-
-# Take the feature keys in ds_train and put it in the list
-for feature, label in ds_train.take(1):
-    columns = list(feature.keys())
-
-# Make the feature columns of all column. The type of all values column is numeric
-feature_columns = []
-for header in columns:
-    feature_columns.append(feature_column.numeric_column(header))
-
-# Creata a feature_layer for the feature_column input
-feature_layer = tf.keras.layers.DenseFeatures(feature_columns)
+x_test = df_test.drop(columns=['prognosis'])
+y_test = df_test.drop(columns=column_list[:-1])
 
 # Create the model with output layer is dense layer with 41 type of label
 model = tf.keras.Sequential([
-  feature_layer,                           
+  tf.keras.layers.InputLayer(input_shape=(1, 132)),                           
   tf.keras.layers.Dense(8, activation='relu'),
-  tf.keras.layers.Dense(8, activation='relu'),
+  tf.keras.layers.Dense(16, activation='relu'),
   tf.keras.layers.Dropout(.1),
   tf.keras.layers.Dense(41, activation='softmax')
 ])
@@ -87,8 +62,8 @@ model.compile(optimizer='adam',
               loss= 'sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-# Train the model
-model.fit(ds_train, validation_data=ds_val, epochs=50)
+# Train the model and split the validation to 0.2 with 30 epochs
+model.fit(x_train, y_train, validation_split=0.2, epochs=30)
 
 # Test the model and compare y_pred and y_test
 pred = model.predict(ds_test)
